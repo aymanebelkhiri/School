@@ -15,9 +15,9 @@
                      <label for="email" >Email</label>
                      <input type="text" class="form-control" id="Email" name='Email' >
               </div>
-              @isset($error)
+              @if(isset($error))
               <div style='color:red'>{{$error}}</div>
-              @endisset
+              @endif
               <div class="mb-3">
                      <label for="password">Mot de passe</label>
                      <input type="password" class="form-control" id="password" name='Password'>
