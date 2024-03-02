@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -21,4 +22,5 @@ class StudentController extends Controller
             'Password'=>'required'
         ]);
     }
+
 }

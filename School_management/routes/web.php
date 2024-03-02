@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EtudiantREsetPassword;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,12 @@ Route::get('/', function () {
     return view('index');
 })->name("home");
 //-----------------------------aymane------------------------------
+Route::resource('password', EtudiantREsetPassword::class);
 
 
 //-----------------------------narjisse----------------------------
 Route::get('/logS',[App\Http\Controllers\StudentController::class,'FormCnx'])->name('Form');
 Route::post('/etudiant',function(){
     return view('Etudiant.AfficheE');
-})->middleware('authS');
+})->middleware('authS')->name("logS");
 //-----------------------------hraph-------------------------------
