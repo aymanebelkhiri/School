@@ -3,24 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Etudiant;
+use App\Models\Prof;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
     /**
@@ -28,7 +22,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/'; // Définir une redirection par défaut
 
     /**
      * Create a new controller instance.
@@ -52,6 +46,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string', Rule::in(['etudiants', 'admin', 'profs'])],
         ]);
     }
 
@@ -63,10 +58,50 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password']), // Hasher le mot de passe
+            'role' => $data['role'],
         ]);
+
+        // Insérer les données dans la table appropriée en fonction du rôle de l'utilisateur
+        if ($data['role'] === 'etudiants') {
+            Etudiant::create([
+                'id_etudiant' => $user->id,
+                'Matricule' => 1,
+                'Nom' => $data['name'],
+                'Prenom' => "",
+                'DateNaissance' => Carbon::now(),
+                'Sexe' => "",
+                'Email' => $data['email'],
+                'Password' => Hash::make($data['password']), // Hasher le mot de passe si nécessaire
+                'Age' => 1,
+                'Groupe' => 1,
+            ]);
+            $this->redirectTo = '/etudiant'; // Rediriger vers la page des étudiants
+        } elseif ($data['role'] === 'admin') {
+            Admin::create([
+                'Id' => $user->id,
+                'Nom' => $data['name'],
+                'Prenom' => "",
+                'Email' => $data['email'],
+                'Password' => Hash::make($data['password']), // Hasher le mot de passe si nécessaire
+            ]);
+            $this->redirectTo = '/admin'; // Rediriger vers la page des administrateurs
+        } elseif ($data['role'] === 'profs') {
+            Prof::create([
+                'id_prof' => $user->id,
+                'Nom' => $data['name'],
+                'Prenom' => "",
+                'Email' => $data['email'],
+                'Sexe' => "",
+                'Password' => Hash::make($data['password']), // Hasher le mot de passe si nécessaire
+                'Module' => 1,
+            ]);
+            $this->redirectTo = '/prof'; // Rediriger vers la page des professeurs
+        }
+
+        return $user;
     }
 }
