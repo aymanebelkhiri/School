@@ -47,9 +47,9 @@ https://templatemo.com/tm-557-grad-school
         <li><a href="https://templatemo.com" class="external">External</a></li>
         <li class="has-submenu"><a href="#section2">Connect</a>
           <ul class="sub-menu">
-            <li><a href="#section2">As Student</a></li>
-            <li><a href="#section3">As Teacher</a></li>
-            <li><a href="#section3">As Admin</a></li>
+            <li><a href="/logS">As Student</a></li>
+            <li><a href="/logT">As Teacher</a></li>
+            <li><a href="/logA">As Admin</a></li>
           </ul>
         </li>
       </ul>

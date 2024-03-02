@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 
 //-----------------------------narjisse----------------------------
-
-
+Route::get('/logS',[App\Http\Controllers\StudentController::class,'FormCnx'])->name('Form');
+Route::post('/etudiant',function(){
+    return view('Etudiant.AfficheE');
+})->middleware('authS');
 //-----------------------------hraph-------------------------------
