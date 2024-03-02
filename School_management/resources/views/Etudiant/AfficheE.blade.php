@@ -1,3 +1,0 @@
-@isset($Nom)
-{{$Nom}}
-@endisset
