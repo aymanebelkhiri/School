@@ -47,13 +47,25 @@ https://templatemo.com/tm-557-grad-school
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">Contact</a></li>
         <li><a href="https://templatemo.com" class="external">External</a></li>
-        <li class="has-submenu"><a href="#section2">Connect</a>
-          <ul class="sub-menu">
-            <li><a href="">As Student</a></li>
-            <li><a href="/logT">As Teacher</a></li>
-            <li><a href="/logA">As Admin</a></li>
-          </ul>
-        </li>
+        @if (Route::has('login'))
+            
+                @auth
+                    @if(auth()->user()->role === 'etudiants')
+                        <a href="{{ url('/etudiant') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home (Etudiant)</a>
+                    @elseif(auth()->user()->role === 'admin')
+                        <a href="{{ url('/admin') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home (Admin)</a>
+                    @elseif(auth()->user()->role === 'profs')
+                        <a href="{{ url('/prof') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home (Prof)</a>
+                    @endif
+                @else
+                <li><a href="{{route('login')}}" class="external">Connect</a></li>
+
+                    <!-- @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                    @endif -->
+                @endauth
+            @endif
+        
       </ul>
     </nav>
   </header>
