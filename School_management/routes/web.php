@@ -38,7 +38,9 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 
 //-----------------------------narjisse----------------------------
-
+Route::get('/indexE',function(){
+    return view('etudiant.index');
+});
 
 //-----------------------------hraph-------------------------------
 
