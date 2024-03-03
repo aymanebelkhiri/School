@@ -75,7 +75,7 @@ class RegisterController extends Controller
                 'DateNaissance' => Carbon::now(),
                 'Sexe' => "",
                 'Email' => $data['email'],
-                'Password' => Hash::make($data['password']), // Hasher le mot de passe si nécessaire
+                'Password' => $data['password'], // Hasher le mot de passe si nécessaire
                 'Age' => 1,
                 'Groupe' => 1,
             ]);
@@ -86,7 +86,7 @@ class RegisterController extends Controller
                 'Nom' => $data['name'],
                 'Prenom' => "",
                 'Email' => $data['email'],
-                'Password' => Hash::make($data['password']), // Hasher le mot de passe si nécessaire
+                'Password' => $data['password'], // Hasher le mot de passe si nécessaire
             ]);
             $this->redirectTo = '/admin'; // Rediriger vers la page des administrateurs
         } elseif ($data['role'] === 'profs') {
@@ -96,7 +96,7 @@ class RegisterController extends Controller
                 'Prenom' => "",
                 'Email' => $data['email'],
                 'Sexe' => "",
-                'Password' => Hash::make($data['password']), // Hasher le mot de passe si nécessaire
+                'Password' => $data['password'], // Hasher le mot de passe si nécessaire
                 'Module' => 1,
             ]);
             $this->redirectTo = '/prof'; // Rediriger vers la page des professeurs
