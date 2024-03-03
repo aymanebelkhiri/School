@@ -35,4 +35,5 @@
 
 <center><h1><i>Informations personnelles</i></h1></center>
    <h5>Nom</h5>      <h5>Prenom</h5>
+
 @endsection

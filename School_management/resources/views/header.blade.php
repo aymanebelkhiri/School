@@ -50,13 +50,15 @@ https://templatemo.com/tm-557-grad-school
         @if (Route::has('login'))
             
                 @auth
-                    @if(auth()->user()->role === 'etudiants')
-                        <a href="{{ url('/etudiant') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home (Etudiant)</a>
-                    @elseif(auth()->user()->role === 'admin')
-                        <a href="{{ url('/admin') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home (Admin)</a>
-                    @elseif(auth()->user()->role === 'profs')
-                        <a href="{{ url('/prof') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home (Prof)</a>
-                    @endif
+                <li><a class="external" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a></li>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                 @else
                 <li><a href="{{route('login')}}" class="external">Connect</a></li>
 
