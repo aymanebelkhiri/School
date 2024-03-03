@@ -30,7 +30,11 @@ Route::get('/etudiant',[App\Http\Controllers\HomeEtudiantController::class, 'ind
 Route::get('/admin', [App\Http\Controllers\HomeAdminController::class, 'index'])->name('admin');
 Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->name('prof');
 
-
+// Route::middleware(["role:etudiants"])->group(function(){
+//     Route::get("/etudiant",function(){
+//         return "etudiant";
+//     });
+// });
 
 
 //-----------------------------narjisse----------------------------

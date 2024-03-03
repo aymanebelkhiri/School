@@ -25,17 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/prof';
-    protected function authenticated($request, $user)
-    {
-        if ($user->role === 'etudiants') {
-            return redirect()->route('etudiant');
-        } elseif ($user->role === 'admin') {
-            return redirect()->route('admin');
-        } elseif ($user->role === 'profs') {
-            return redirect()->route('prof');
-        }
-    }
+    protected $redirectTo = '/etudiant';
 
     /**
      * Create a new controller instance.
