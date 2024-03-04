@@ -1,10 +1,14 @@
 @extends('header')
 @section('content')
 <br><br><br>
-
+@php
+use App\Models\Etudiant;
+$etudiant = Etudiant::findOrFail(Auth::user()->id);
+@endphp
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/notes/1">Notes</a>
+    @if(isset($etudiant))
+    <a class="navbar-brand" href="/notes/{{$etudiant->id_etudiant}}">Notes</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,6 +38,21 @@
 </nav>
 
 <center><h1><i>Informations personnelles</i></h1></center>
-   <h5>Nom</h5>      <h5>Prenom</h5>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Matricule:</strong> {{$etudiant->Matricule}}</p>
+      <p><strong>Nom:</strong> {{$etudiant->Nom}}</p>
+      <p><strong>Sexe:</strong> {{$etudiant->Sexe}}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Prénom:</strong> {{$etudiant->Prenom}}</p>
+      <p><strong>Age:</strong> {{$etudiant->Age}}</p>
+      <p><strong>Date de naissance:</strong> {{$etudiant->DateNaissance}}</p>
+    </div>
+  </div>
+</div>
+
+@endif
 @endsection
