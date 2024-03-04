@@ -39,6 +39,6 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 //-----------------------------narjisse----------------------------
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
-
+Route::get('/events',[App\Http\Controllers\EventController::class,'getEvents'])->name('Events');
 //-----------------------------hraph-------------------------------
 

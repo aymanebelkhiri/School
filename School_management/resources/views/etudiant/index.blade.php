@@ -8,7 +8,7 @@ $etudiant = Etudiant::findOrFail(Auth::user()->id);
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     @if(isset($etudiant))
-    <a class="navbar-brand" href="/notes/{{$etudiant->id_etudiant}}">Notes</a>
+    <a class="navbar-brand" href="{{ route('Notes'}}">Notes</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
