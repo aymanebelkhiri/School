@@ -218,7 +218,7 @@
               <img src="{{ url('images/author-01.png') }}" alt="Author 1">
               </div>
               <div class="text-button-pay">
-                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -245,7 +245,7 @@
               <img src="{{ url('images/author-03.png') }}" alt="Author 3">
               </div>
               <div class="text-button-pay">
-                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -272,7 +272,7 @@
               <img src="{{ url('images/courses-05.jpg') }}" alt="">
               </div>
               <div class="text-button-pay">
-                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -313,7 +313,7 @@
 
               </div>
               <div class="text-button-pay">
-                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -327,7 +327,7 @@
               <img src="{{ url('images/author-04.png') }}" alt="">
               </div>
               <div class="text-button-pay">
-                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -357,7 +357,7 @@
 
               </div>
               <div class="text-button-pay">
-                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>

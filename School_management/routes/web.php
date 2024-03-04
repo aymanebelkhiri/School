@@ -45,3 +45,7 @@ Route::get('/notes/{id}',[App\Http\Controllers\HomeEtudiantController::class,'ge
 
 //-----------------------------hraph-------------------------------
 
+use App\Http\Controllers\PaymentController;
+
+Route::get('/pay', [PaymentController::class, 'showDashbord'])->name('Dash');
+Route::post('/pay', [PaymentController::class, 'systemPayment'])->name('pay');
