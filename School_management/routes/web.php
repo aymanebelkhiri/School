@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeEtudiantController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ExamController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +42,6 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 //-----------------------------narjisse----------------------------
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/events',[App\Http\Controllers\EventController::class,'getEvents'])->name('Events');
+Route::get('/exams',[App\Http\Controllers\ExamController::class,'getExams'])->name('Exams');
 //-----------------------------hraph-------------------------------
 

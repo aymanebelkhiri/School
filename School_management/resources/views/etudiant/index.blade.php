@@ -8,20 +8,20 @@ $etudiant = Etudiant::findOrFail(Auth::user()->id);
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     @if(isset($etudiant))
-    <a class="navbar-brand" href="{{ route('Notes'}}">Notes</a>
+    <a class="navbar-brand" href="/Notes/{{$etudiant->id_etudiant}}">Notes</a> <!-- Corrected the route syntax -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/exams">Exams</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('Exams') }}">Exams</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Emploi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/events">Events</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('Events')}}">Events</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,6 +53,5 @@ $etudiant = Etudiant::findOrFail(Auth::user()->id);
     </div>
   </div>
 </div>
-
 @endif
 @endsection
