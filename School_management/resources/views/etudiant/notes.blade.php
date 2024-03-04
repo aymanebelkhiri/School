@@ -10,7 +10,7 @@
 <body>
     <br><br><br><br><br>
     <center><h1><i>My notes</i></h1></center>
-    <table class='table table-striped' >
+    <table class='table table-striped' <>
     <tr>
         <th scope='col'>Module</th>
         <th scope='col'>Exam</th>
