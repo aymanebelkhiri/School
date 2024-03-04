@@ -52,7 +52,7 @@ https://templatemo.com/tm-557-grad-school
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 40%;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -96,6 +96,78 @@ https://templatemo.com/tm-557-grad-school
   .modal-body {padding: 20px 16px;}
   
   .modal-footer {
+    padding: 2px 16px;
+    background-color: rgba(22,34,57,0.99);
+    color:white;
+    }
+
+
+        /* The Modal (background) */
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content2 {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop2;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop2;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop2 {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop2 {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close2 {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close2:hover,
+  .close2:focus {
+    color: white;
+    text-decoration: none;
+    /* cursor: pointer; */
+  }
+  
+  .modal-header2 {
+    padding: 2px 16px;
+    background-color:  rgba(22,34,57,0.99);
+    color: white;
+    padding: 10px;
+  }
+  
+  .modal-body2 {padding: 20px 16px;}
+  
+  .modal-footer2 {
     padding: 2px 16px;
     background-color: rgba(22,34,57,0.99);
     color:white;
@@ -206,7 +278,7 @@ https://templatemo.com/tm-557-grad-school
                   </button>
 
                   @if (Route::has('password.request'))
-                      <a class="btn btn-link" style="color:rgba(22,34,57,0.99);" href="{{ route('password.request') }}">
+                      <a class="btn btn-link" id="myBtn2" style="color:rgba(22,34,57,0.99);" >
                           {{ __('Forgot Your Password?') }}
                       </a>
                   @endif
@@ -219,7 +291,49 @@ https://templatemo.com/tm-557-grad-school
   </div> -->
   
 </div>
+  <!-- modal -->
+    <!-- The Modal -->
+    <div id="myModal2" class="modal">
 
+<!-- Modal content -->
+<div class="modal-content2">
+  <div class="modal-header2" >
+      <h4>Reset Password</h4>
+    <span class="close2">&times;</span>
+  </div>
+  <div class="modal-body2"><br>
+  <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn" style="background-color:#f5a425;color:white;">
+                                    {{ __('Send Password Reset Link') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+  </div>
+  <!-- <div class="modal-footer2">
+    <br><br>
+  </div> -->
+  
+</div>
+    </div>
 </div>
     @yield("content")
 
@@ -327,6 +441,34 @@ https://templatemo.com/tm-557-grad-school
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
+      }
+    }
+    </script>
+    <!-- modal -->
+    <script>
+    // Get the modal
+    var modal2 = document.getElementById("myModal2");
+    
+    // Get the button that opens the modal
+    var btn2 = document.getElementById("myBtn2");
+    
+    // Get the <span> element that closes the modal
+    var span2 = document.getElementsByClassName("close2")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn2.onclick = function() {
+      modal2.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span2.onclick = function() {
+      modal2.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal2) {
+        modal2.style.display = "none";
       }
     }
     </script>
