@@ -20,9 +20,7 @@ $etudiant = Etudiant::findOrFail(Auth::user()->id);
         <li class="nav-item">
           <a class="nav-link" href="#">Emploi</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('Events')}}">Events</a>
-        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Message
