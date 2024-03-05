@@ -25,9 +25,9 @@ class EmploiFactory extends Factory
         $faker = \Faker\Factory::create();
 
         return [
-            'module' => $faker->sentence(),
-            'prof' => $faker->name(),
-            'filiere' => $faker->sentence(),
+            'module' => $faker->numberBetween(1,10),
+            'prof' => $faker->numberBetween(1,10),
+            'filiere' => $faker->numberBetween(1,10),
             'salleNum' => $faker->randomNumber(3),
             'day' => $faker->dayOfWeek(),
             'startTime' => $faker->time('H:i'),

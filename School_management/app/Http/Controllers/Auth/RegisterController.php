@@ -61,14 +61,14 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']), // Hasher le mot de passe
+            'password' => $data['password'], // Hasher le mot de passe
             'role' => $data['role'],
         ]);
 
         // Insérer les données dans la table appropriée en fonction du rôle de l'utilisateur
         if ($data['role'] === 'etudiants') {
             Etudiant::create([
-                'id_etudiant' => $user->id,
+                'id_etudiant' => $user["id"],
                 'Matricule' => 1,
                 'Nom' => $data['name'],
                 'Prenom' => "",

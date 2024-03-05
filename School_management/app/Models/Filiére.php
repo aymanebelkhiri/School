@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Filiére extends Model
 {
     use HasFactory;
-    protected $primayKey = 'id_filiére';  
+    protected $table='filiéres';
+    protected $primayKey = 'id';  
     protected $fillable = [
         'Nom',
         'Domaine',

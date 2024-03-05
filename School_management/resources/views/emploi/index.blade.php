@@ -31,13 +31,13 @@
                 <tbody>
                     @foreach($emps as $emp)
                     <tr>
-                        <td>{{ $emp->module->Nom }}</td>
-                        <td>{{ $emp->prof->Nom }}</td>
-                        <td>{{ $emp->filiere->Nom }}</td>
-                        <td>{{ $emp->salleNum->Nom }}</td>
-                        <td>{{ $emp->day->Nom }}</td>
-                        <td>{{ $emp->startTime->Nom }}</td>
-                        <td>{{ $emp->endTime->Nom }}</td>
+                        <td>{{ $emp->module }}</td>
+                        <td>{{ $emp->prof}}</td>
+                        <td>{{ $emp->filiere }}</td>
+                        <td>{{ $emp->salleNum}}</td>
+                        <td>{{ $emp->day }}</td>
+                        <td>{{ $emp->startTime }}</td>
+                        <td>{{ $emp->endTime }}</td>
                     </tr>
                     @endforeach
                 </tbody>

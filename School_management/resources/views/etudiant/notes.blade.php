@@ -1,55 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes</title>
-</head>
-    @extends('header')
-    @section('content')
-<body>
-    <br><br><br><br><br>
-    <center><h1><i>My notes</i></h1></center>
-    <table class='table table-striped' <>
-    <tr>
-        <th scope='col'>Module</th>
-@if(isset($modulesAvecNotes))
-    @foreach($modulesAvecNotes as $nomModule => $notes)
-        @php
-            $alreadyPrintedTitles = [];
-        @endphp
-        @foreach($notes as $note)
-            @if (in_array($note->Title, $alreadyPrintedTitles))
-               @continue;
-            @else
-                <th scope='col'>{{ $note->Title }}</th>
-                @php
-                    $alreadyPrintedTitles[] = $note->Title;
-                @endphp
-            @endif
-        @endforeach
-    @endforeach
-@endif
+@extends('etudiant.header')
+@section('contentStudent')
+@php
+    use App\Models\Etudiant;
+    use App\Models\Groupe;
+    use App\Models\Filiére;
+    use App\Models\Module;
+    use App\Models\Note;
+
+    $etudiant = Etudiant::findOrFail(Auth::user()->id);
+    $grp = Groupe::findOrFail($etudiant->Groupe);
+    $filiere = Filiére::findOrFail($grp->Filiére);
+    $Modules = Module::where('Filiére', $filiere->id)->get();
 
 
-    </tr>
-    @if(isset($modulesAvecNotes))
-        @foreach($modulesAvecNotes as $nomModule => $notes)
+    // Tableaux pour stocker les notes par module
+    $notesParModule = [];
+
+    foreach ($Modules as $Module) {
+        // Récupérer les notes pour ce module
+        $notes = Note::where('Etudiant', $etudiant->id_etudiant)
+                      ->where('Module', $Module->id_module)
+                      ->get();
+
+        // Stocker les notes dans le tableau $notesParModule
+        $notesParModule[$Module->Nom] = $notes;
+    }
+@endphp
+
+<style>
+    .total {
+        width: 1550px;
+        margin: auto;
+        text-align: center;
+    }
+</style>
+
+<div class="container total">
+    <center><h1>Notes</h1></center><br><br>
+    @foreach ($Modules as $Module)
+    <table class="table table-light table-responsive-xl table-striped mb-5 ">
+        <thead>
+            <tr class="table-active ">
+                <th><br></th>
+                @foreach ($notesParModule[$Module->Nom] as $note)
+                <th>
+                        <strong>{{ $note->Title }}</strong><br><small>{{ $note->date }}</small> 
+                    </th>
+                    @endforeach
+            </tr> 
+        </thead>
+        <tbody>
             <tr>
-                <td class='table-primary'>{{ $nomModule }}</td>
-                @foreach($notes as $index => $note)
-                    @if($index > 0)
-                
-                    @endif
-                    <td class='table-primary'>{{ $note->Valeur }}</td>
-                    
-                @endforeach
+                <th>{{ $Module->Nom }}</th>
+                @foreach ($notesParModule[$Module->Nom] as $note)
+                <td>
+                        {{ $note->Valeur }}<br>
+                    </td>
+                    @endforeach
+
             </tr>
-        @endforeach
-    @endif
-</table>
+        </tbody>
+    </table>
+    @endforeach
+</div>
 
-
-</body>
-    @endsection
-</html>
+@endsection
