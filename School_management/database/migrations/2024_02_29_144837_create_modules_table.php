@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('MasseHoraire');
             $table->integer('Coefficient');
             $table->unsignedBigInteger('Filiére');
-            $table->foreign('Filiére')->references('id_filiére')->on('filiéres')->cascadeOnDelete();
+            $table->foreign('Filiére')->references('id')->on('filiéres')->cascadeOnDelete();
             $table->timestamps();
         });
     }

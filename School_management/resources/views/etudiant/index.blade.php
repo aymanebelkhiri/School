@@ -18,7 +18,7 @@ $etudiant = Etudiant::findOrFail(Auth::user()->id);
           <a class="nav-link active" aria-current="page" href="{{ route('Exams') }}">Exams</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Emploi</a>
+          <a class="nav-link" href="{{route('Emploi')}}">Emploi</a>
         </li>
 
         <li class="nav-item dropdown">

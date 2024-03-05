@@ -22,7 +22,7 @@ Route::get('/', function () {
 })->name("home");
 Route::get('/a', function () {
     return view('welcome');
-})->name("home");
+})->name("h");
 
 
 //-----------------------------aymane------------------------------
@@ -46,6 +46,8 @@ Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');
 //-----------------------------hraph-------------------------------
 
 use App\Http\Controllers\PaymentController;
-
-Route::get('/pay', [PaymentController::class, 'showDashbord'])->name('Dash');
+use App\Http\Controllers\EmploiController;
+Route::get('/pay', [PaymentController::class, 'showDashboard'])->name('Dash');
 Route::post('/pay', [PaymentController::class, 'systemPayment'])->name('pay');
+Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
+

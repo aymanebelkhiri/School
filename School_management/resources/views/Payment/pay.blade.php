@@ -3,41 +3,45 @@
 @section('title', 'Payment')
 
 @section('content')
-<section class="services" id="services">
-    <div class="main">
-        <h1>Payment Form Widget</h1>
-        <div class="content">
-            <div class="sap_tabs">
-                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                    <div class="pay-tabs">
-                        <h2>Select Payment Method</h2>
-                        <ul class="resp-tabs-list">
-                            <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span><label class="pic1"></label>Credit Card</span></li>
-                            <!-- Add more list items for other payment methods if needed -->
-                        </ul>   
-                    </div>
-                
-                                <h3>Payment Information</h3>
-                                <form action="{{ route('pay') }}" method="post">
-                                    @csrf
-                                    <div class="tab-for">                
-                                        <h5>Email Address</h5>
-                                        <input type="text" name="email">
-                                        <h5>First Name</h5>                                                    
-                                        <input type="text" name="first_name">
-                                        <h5>Amount (USD)</h5>
-                                        <input type="text" id="amount" name="amount">
-                                    </div>
-                                    <input type="submit" value="Pay">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Add more tab-1 sections for other payment methods if needed -->
+<div class="container">
+    <div class="back">
+        <button class="btn btn-secondary mt-3"><a href="/" class="text-white">Back</a></button>
+    </div>
+    <br>
+    <section class="services" id="services">
+        <div class="main" style="background-color: black; color: rgb(255, 255, 255);">
+            <h1 class="text-center">Payment Form Widget</h1>
+            <div class="content">
+                <div class="sap_tabs">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+              
                     </div>
                 </div>
-            </div>  
+                <div class="payment-info" style="background-color: #333; padding: 20px;">
+                    <h3 class="text-center" style="margin-bottom: 20px;">Payment Information</h3>
+                    <form action="{{ route('pay') }}" method="post">
+                        @csrf
+                        <div class="tab-for">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" style="color: gold;">
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" style="color: gold;">
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Amount (USD)</label>
+                                <input type="text" class="form-control" id="amount" name="amount" style="color: gold;">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+                    </form>
+                </div>
+            </div>
+            <p class="text-center footer">© 2016 Payment Form Widget. All Rights Reserved | Template by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
         </div>
-        <p class="footer">Copyright © 2016 Payment Form Widget. All Rights Reserved | Template by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
-    </div>
-</section>
+    </section>
+</div>
+
 @endsection

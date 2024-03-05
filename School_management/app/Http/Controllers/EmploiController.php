@@ -8,7 +8,7 @@ class EmploiController extends Controller
 {
     public function index ()
     {
-        $emp=Emploi::with(['module','prof','filiere'])->get();
-        return view('Emploi.index', compact('emp'));
+        $emps=Emploi::with(['module','prof','filiere'])->get();
+        return view('Emploi.index', compact('emps'));
     }
 }

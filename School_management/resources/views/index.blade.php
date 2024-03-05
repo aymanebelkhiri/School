@@ -1,9 +1,23 @@
 @extends('header')
 
+
 @section('titre', 'Home')
 
 @section('content')
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+      <!-- Success Message -->
+      @if(Session::has('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ Session::get('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
 
+      <!-- Navbar content -->
+      <!-- Navbar brand, toggler, links, etc. -->
+  </div>
+</nav>
 
   <!-- ***** Main Banner Area Start ***** -->
   <section class="section main-banner" id="top" data-section="section1">

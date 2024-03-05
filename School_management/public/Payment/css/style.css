@@ -57,7 +57,7 @@ label{
 	font-size:35px;
 	text-align:center;
 	text-transform:uppercase;
-	color:#B3E03F;
+	color:#ffffff;	
     margin-bottom: 25px;
 	font-family: 'Fugaz One', cursive;
 }
@@ -66,17 +66,17 @@ label{
 	margin:0 auto;
 }
 p.footer {
-    color: #3AD5A0;
+    color: #ffffff;		
     text-align: center;
     font-size: 14px;
     margin-top: 35px;
     font-weight: 600;
 }
 p.footer a{
-	color:#3AD5A0;
+	color:#ffffff;	
 }
 p.footer a:hover{
-	color: #B3E03F;	
+	color: #ffffff;		
 }
 /******** SAP ************/
 .sap_tabs{
@@ -93,7 +93,7 @@ p.footer a:hover{
     font-size: 26px;
     text-align: center;
     margin-bottom: 25px;
-    color: #3AD5A0;
+    color: #d0d53a;
     font-weight: 500;
     font-family: 'Alegreya Sans', sans-serif;
 }

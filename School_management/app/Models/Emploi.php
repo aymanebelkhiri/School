@@ -4,21 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Module;
-use App\Models\Prof;
-use App\Models\Filiére;
 
 class Emploi extends Model
 {
     use HasFactory;
+    protected $table = 'emploi';
     public function module () 
     {
-        return $this->belongsTo(Module::class,'module_id');
+        return $this->belongsTo(Module::class,'id_module');
     }
     public function prof (){
-        return $this->belongsTo(Prof::class,'prof_id');
+        return $this->belongsTo(Prof::class,'id_prof');
     }
     public function filiere() {
-        return $this->belongsTo(Filiére::class,'filiére_id');
+        return $this->belongsTo(Filiére::class,'id');
     }
 }

@@ -1,6 +1,50 @@
 @extends('header')
-@foreach ($emp as $e)
-    <p>Module: {{ $e->module->name }}</p>
-    <p>Prof: {{ $e->prof->name }}</p>
-    <p>Filiere: {{ $e->filiere->name }}</p>
-@endforeach
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .table-sm td, .table-sm th {
+            padding: 0.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Liste des Emplois</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Module</th>
+                        <th>Professeur</th>
+                        <th>Filière</th>
+                        <th>Numéro de salle</th>
+                        <th>Jour</th>
+                        <th>Heure de début</th>
+                        <th>Heure de fin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($emps as $emp)
+                    <tr>
+                        <td>{{ $emp->module->Nom }}</td>
+                        <td>{{ $emp->prof->Nom }}</td>
+                        <td>{{ $emp->filiere->Nom }}</td>
+                        <td>{{ $emp->salleNum->Nom }}</td>
+                        <td>{{ $emp->day->Nom }}</td>
+                        <td>{{ $emp->startTime->Nom }}</td>
+                        <td>{{ $emp->endTime->Nom }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+</body>
+</html>
+

@@ -13,22 +13,19 @@ return new class extends Migration
     {
         Schema::create('emploi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInterger('module_id');
-            $table->unisgnedBigInteger('prof_id');
-            $table->unsignedBigInteger('filiére_id');
+            $table->unsignedBigInteger('module');
+            $table->unsignedBigInteger('prof');
+            $table->unsignedBigInteger('filiere');
             $table->string('salleNum');
             $table->string('day');
             $table->time('startTime');
             $table->time('endTime');
             $table->timestamps();
-     
-            //db ghandouzou les foreign key 
 
-            $table->foreign('module_id')->references('id')->on('modules');
-            $table->foreign('prof_id')->references('id')->on('profs');
-            $table->foreign('filiére_id')->references('id')->on('filiéres');
-
-            
+            // Define foreign key constraints
+            $table->foreign('module')->references('id_module')->on('modules')->cascadeOnDelete();
+            $table->foreign('filiere')->references('id')->on('filiéres')->cascadeOnDelete();
+            $table->foreign('prof')->references('id_prof')->on('profs')->cascadeOnDelete();
         });
     }
 

@@ -7,21 +7,30 @@ use Stripe\PaymentIntent;
 use Stripe\Stripe;
 use Illuminate\Support\Facades\Session;
 
-
 class PaymentController extends Controller
 {
-   public function showDashbord (){
-    return view ('Payment.pay');
-   }
-   public function systemPayment(Request $request){
-       Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-       $paymentIntent= PaymentIntent::create([
-        'amount'=>$request->amount*100,
-        'currency'=>'usd',
-       ])      ;
-       $successMessage = Session::flash('success','"Votre paiement a été effectué avec succès !"');
+    public function showDashboard()
+    {
+        return view('Payment.pay');
+    }
+    
 
-       return view ('Payment.confirmation',['clientSecret'=>$paymentIntent->client_secret,'successMessage' => $successMessage,
-    ]);
-   }
+    public function systemPayment(Request $request)
+    {
+        // Set your Stripe secret key
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+    
+        // Create a payment intent
+        $paymentIntent = PaymentIntent::create([
+            'amount' => $request->amount * 100, // Amount in cents
+            'currency' => 'usd',
+        ]);
+    
+        // Flash success message
+        $successMessage = "Votre paiement a été effectué avec succès !";
+        Session::flash('success', $successMessage);
+    
+        return redirect()->route('home');
+    }
+    
 }
