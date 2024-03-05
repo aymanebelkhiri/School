@@ -31,6 +31,9 @@ https://templatemo.com/tm-557-grad-school
 -->
 <style>
         /* The Modal (background) */
+        body a{
+          text-decoration: none
+        }
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

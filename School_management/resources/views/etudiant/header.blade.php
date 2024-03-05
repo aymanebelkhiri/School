@@ -28,6 +28,7 @@
         aside div a {
             color: white;
             padding: 15px 57px;
+            text-decoration: none
             
         }
         aside div a:hover{
