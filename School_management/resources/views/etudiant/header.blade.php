@@ -13,7 +13,7 @@
             padding: 10px;
             padding-top:0px ;
             background-color: #222e47;
-            height: 1205px;
+            height: 1252px;
             font-family:Arial, Helvetica, sans-serif;
             width: 250px;
             box-sizing: border-box;
@@ -48,7 +48,7 @@
             <h4 style="color: #f5a425;">{{$etudiant["Nom"]}}</h4>
             </center>
             <hr>
-            <div><a href="{{ route('etudiant') }}" style="padding:15px 10px;">Personal Info </a></div>
+            <div><a href="{{ route('etudiant') }}" style="padding:15px 35px;">Personal Info </a></div>
 
             <div><a href="">Emploi</a></div>
             <div><a href="{{ route('Notes', Auth::user()->id) }}">Notes</a></div>
