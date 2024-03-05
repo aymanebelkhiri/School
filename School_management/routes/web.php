@@ -47,12 +47,12 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 
 //-----------------------------narjisse----------------------------
-Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
-Route::resource('/etudiants', App\Http\Controllers\GroupesController::class);
-Route::resource('/profs', App\Http\Controllers\GroupesController::class);
-Route::resource('/exams', App\Http\Controllers\GroupesController::class);
-Route::resource('/events', App\Http\Controllers\GroupesController::class);
-Route::resource('/messages', App\Http\Controllers\GroupesController::class);
+Route::resource('groupes', App\Http\Controllers\GroupeController::class);
+Route::resource('etudiants', App\Http\Controllers\GroupesController::class);
+Route::resource('profs', App\Http\Controllers\GroupesController::class);
+Route::resource('exams', App\Http\Controllers\GroupesController::class);
+Route::resource('events', App\Http\Controllers\GroupesController::class);
+Route::resource('messages', App\Http\Controllers\GroupesController::class);
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
