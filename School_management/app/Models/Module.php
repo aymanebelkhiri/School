@@ -17,7 +17,7 @@ class Module extends Model
     ];
 
     public function Filiéres(){
-        $this->belongsTo(Filiére::class,'id_filiére');
+        $this->belongsTo(Filiére::class,'id');
     }
 
     public function notes(){

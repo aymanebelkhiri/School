@@ -366,6 +366,8 @@ https://templatemo.com/tm-557-grad-school
 <script src="{{ url('js/video.js') }}"></script>
 <script src="{{ url('js/slick-slider.js') }}"></script>
 <script src="{{ url('js/custom.js') }}"></script>
+<!-- Custom script -->
+<script src="{{ asset('js/msg.js') }}"></script>
 
     <script>
         //according to loftblog tut

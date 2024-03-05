@@ -29,7 +29,7 @@ Route::get('/', function () {
 })->name("home");
 Route::get('/a', function () {
     return view('welcome');
-})->name("home");
+})->name("h");
 
 
 //-----------------------------aymane------------------------------
@@ -63,4 +63,10 @@ Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage']
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
 
 //-----------------------------hraph-------------------------------
+
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\EmploiController;
+Route::get('/pay', [PaymentController::class, 'showDashboard'])->name('Dash');
+Route::post('/pay', [PaymentController::class, 'systemPayment'])->name('pay');
+Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 

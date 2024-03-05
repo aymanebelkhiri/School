@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('Prenom');
             $table->string('Email');
             $table->string('Sexe');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('Password');
 
             $table->unsignedBigInteger('Module');
