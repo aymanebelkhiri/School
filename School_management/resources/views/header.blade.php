@@ -194,7 +194,6 @@ https://templatemo.com/tm-557-grad-school
         <li><a href="#section4">Courses</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">Contact</a></li>
-        <li><a href="https://templatemo.com" class="external">External</a></li>
         @if (Route::has('login'))
             
                 @auth

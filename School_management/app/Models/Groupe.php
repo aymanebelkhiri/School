@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Groupe extends Model
 {
     use HasFactory;
+    protected $table= 'groupes';
     protected $primaryKey = 'id_groupe';
     protected $fillable = [
         'Nom',
