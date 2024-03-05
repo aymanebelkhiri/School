@@ -10,7 +10,7 @@ class EventController extends Controller
     public function getEvents(){
         
         $events = DB::table('Events')->get();
-        return view('Events',compact('events'));
+        return view('etudiant.Events',compact('events'));
 
 
     }

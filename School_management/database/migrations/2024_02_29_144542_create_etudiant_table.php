@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('Email');
             $table->string('Password');
             $table->integer('Age');
+            $table->string('photo');
             $table->unsignedBigInteger('Groupe');
             $table->foreign('Groupe')->references('id_groupe')->on('groupes')->cascadeOnDelete();
             $table->timestamps();
