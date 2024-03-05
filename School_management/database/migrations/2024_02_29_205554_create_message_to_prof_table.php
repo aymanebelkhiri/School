@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreign('Etudiant')->references('id_etudiant')->on('etudiants')->cascadeOnDelete();
             $table->unsignedBigInteger('Prof');
             $table->foreign('Prof')->references('id_prof')->on('profs')->cascadeOnDelete();
-            $table->dateTime('DateTime');
             $table->timestamps();
         });
     }

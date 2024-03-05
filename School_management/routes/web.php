@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeEtudiantController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\MessageProfController;
+use App\Http\Controllers\MessageSecretaryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +50,9 @@ Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNot
 Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
 Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');
 Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name('messageTeacher');
+Route::post('/sendingMessage_prof',[MessageProfController::class,'sendMessage'])->name('Send_message_Teacher');
 Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
+Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
 
 //-----------------------------hraph-------------------------------
 
