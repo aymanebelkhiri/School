@@ -12,6 +12,7 @@
     $filiere = Filiére::findOrFail($grp->Filiére);
     $Modules = Module::where('Filiére', $filiere->id)->get();
 
+
     // Tableaux pour stocker les notes par module
     $notesParModule = [];
 

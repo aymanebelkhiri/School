@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeEtudiantController;
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExamController;
-
+use App\Http\Controllers\MessageProfController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +46,10 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 //-----------------------------narjisse----------------------------
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
-Route::get('/events', [EventController::class, 'index'])->name('Events');
+Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
 Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');
+Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name('messageTeacher');
+Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
+
 //-----------------------------hraph-------------------------------
 

@@ -52,9 +52,9 @@
 
             <div><a href="">Emploi</a></div>
             <div><a href="{{ route('Notes', Auth::user()->id) }}">Notes</a></div>
-            <div><a href="">Events</a></div>
-            <div><a href="" style="padding:15px 10px;"> Message  To Teacher</a></div>
-            <div><a href=""style="padding:15px 10px;"> Message  To Teacher</a></div>
+            <div><a href="{{ route('Events') }}">Events</a></div>
+            <div><a href="{{ route('messageTeacher') }}" style="padding:15px 10px;"> Message  To Teacher</a></div>
+            <div><a href="{{ route('messageSecretary') }}"style="padding:15px 10px;"> Message  To Secretary</a></div>
             <br><br><br><br><br>
             <br><br><br><br><br>
         </aside>

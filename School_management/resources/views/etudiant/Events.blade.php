@@ -7,6 +7,8 @@
 </head>
 @extends('header')
 @section('content')
+@extends('etudiant.header')
+@section('contentStudent')
 <body>
     <br><br><br><br><br><br>
     <div class="container">
