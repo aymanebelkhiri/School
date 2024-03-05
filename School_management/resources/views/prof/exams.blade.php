@@ -20,7 +20,11 @@
 
 
 <div class="container total">
-    <center><h1>Personal Information</h1></center><br><br>
+    <center><h1>Add Date Examen</h1></center><br><br>
+    <form action="{{route('')}}" method="post">
+        <input type="date" class="form-control">
+        <input type="text" class="form-control">
+    </form>
     <div class="row">
         <div class="col-md-6">
             <p><strong>Email:</strong> {{$prof->Email}}</p>

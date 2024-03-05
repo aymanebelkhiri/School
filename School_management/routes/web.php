@@ -36,7 +36,10 @@ Auth::routes();
 Route::get('/etudiant',[App\Http\Controllers\HomeEtudiantController::class, 'index'])->name('etudiant');
 Route::get('/admin', [App\Http\Controllers\HomeAdminController::class, 'index'])->name('admin');
 Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->name('prof');
-
+Route::resource('examens', 'ExamenController');
+Route::get('/profexamen', function () {
+    return view('prof.exams');
+})->name("examen");
 // Route::middleware(["role:etudiants"])->group(function(){
 //     Route::get("/etudiant",function(){
 //         return "etudiant";
