@@ -56,9 +56,18 @@ Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'send
 
 //-----------------------------hraph-------------------------------
 
-use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\EmploiController;
-Route::get('/pay', [PaymentController::class, 'showDashboard'])->name('Dash');
-Route::post('/pay', [PaymentController::class, 'systemPayment'])->name('pay');
+use App\Http\Controllers\CourseController;
 Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
+
+
+
+
+Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
+Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
+Route::post('/Courses/{id}/purchase', [CourseController::class, 'purchase'])->name('Courses.purchase');
+Route::get('/contact',function(){
+   return view('contact.index'); 
+})->name('contacto');

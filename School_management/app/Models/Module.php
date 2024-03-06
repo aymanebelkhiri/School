@@ -13,6 +13,8 @@ class Module extends Model
         'Nom',
         'MasseHoraire',
         'Coefficient',
+        'description',
+        'price',
         'Filiére'
     ];
 
