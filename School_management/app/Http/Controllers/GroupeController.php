@@ -36,25 +36,24 @@ class GroupeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'Nom' => 'required',
-            'Effectif' => 'required',
-            'filiére' => 'required'
+        $request->validate([      
+            'nom' => 'required',
+            'effectif'=>'required',
+            'filiére'=>'required'
+        ]);
+        
+        $FiliéreId = Filiére::where('Nom', $request->filiére)->value('id');
+    
+        $Groupe = Groupe::create([
+            'Nom'=>$request->nom,
+            'Effectif'=>$request->effectif,
+            'Filiére'=>$FiliéreId
         ]);
     
-        $filiereId = DB::talbe('filiéres')->where('Nom',$request->filiére)->value('id');
-    
-        
-        $groupe->Nom = $request->input('Nom');
-        $groupe->Effectif = $request->input('Effectif');
-        $groupe->Filiére = $filiereId; 
-    
-        if ($groupe->save()) {
-            $messageSuccess = 'Groupe mis à jour avec succès';
-            return redirect()->route('groupes.index')->with('messageSuccess', $messageSuccess);
-        } else {
-            $messageEchec = 'Échec de la mise à jour du groupe';
-              return back()->with('messageEchec', $messageEchec);
+        if($Groupe){
+            return redirect()->route('groupes.index')->with('success', 'Étudiant ajouté avec succès');
+        }else{
+            return view('admin.groupes.create');
         }
     }
     

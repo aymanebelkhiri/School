@@ -68,9 +68,10 @@ Route::get('/note', function () {
 Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
+Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
 Route::resource('exams', App\Http\Controllers\GroupesController::class);
 Route::resource('events', App\Http\Controllers\GroupesController::class);
-Route::resource('messages', App\Http\Controllers\GroupesController::class);
+Route::resource('messages', App\Http\Controllers\MessageController::class);
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/events', [EventController::class, 'getEvents'])->name('Events');

@@ -35,29 +35,27 @@ class ProfController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Nom'=>'required',
-            'Prenom'=>'required',
-            'Email'=>'required',
-            'Sexe'=>'required',
-            'Module'=>'required',
-            'Password'=>'required'
+            'nom'=>'required',
+            'prenom'=>'required',
+            'email'=>'required',
+            'sexe'=>'required',
+            'module'=>'required'
         ]);
     
-        $Module = DB::table('modules')->where('Nom',$request->Module)->value('id_module')->get();
+        $Module = Module::where('Nom',$request->module)->value('id_module');
         
         $NewProf = Prof::create([
-            'Nom'=>$request->Nom,
-            'Prenom'=>$request->Prenom,
-            'Email'=>$request->Email,
-            'Sexe'=>$request->Sexe,
+            'Nom'=>$request->nom,
+            'Prenom'=>$request->prenom,
+            'Email'=>$request->email,
+            'Sexe'=>$request->sexe,
             'Module'=>$Module,
-            'Password'=>$request->Password
         ]);
 
         if($NewProf){
-            return view('admin.profs.index')->with('MessageSucces');
+            return redirect()->route('profs.index')->with('success', 'Étudiant ajouté avec succès');
         }else{
-            return view('admin.profs.create')->with('MessageEchec');
+            return view('admin.profs.create');
         }
     }
 
@@ -84,29 +82,25 @@ class ProfController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $Prof = Prof::find($id);
+    $Prof = Prof::findOrFail($id);
 
     $request->validate([
-        'Nom' => 'required',
-        'Prenom' => 'required',
-        'Email' => 'required',
-        'Sexe' => 'required',
+        'nom' => 'required',
+        'prenom' => 'required',
+        'email' => 'required',
+        'sexe' => 'required',
         'Module' => 'required',
     ]);
-
-    // Récupérer l'ID du module
     $Module = Module::where('Nom', $request->Module)->value('id_module');
-
-    // Mettre à jour les données du professeur
+    // dd($request->all());
     $Prof->update([
-        'Nom' => $request->Nom,
-        'Prenom' => $request->Prenom,
-        'Email' => $request->Email,
-        'Sexe' => $request->Sexe,
+        'Nom' => $request->nom,
+        'Prenom' => $request->prenom,
+        'Email' => $request->email,
+        'Sexe' => $request->sexe,
         'Module' => $Module,
     ]);
 
-    // Rediriger avec un message en cas de succès ou d'échec
     if ($Prof) {
         return redirect()->route('profs.index')->with('MessageSucces', 'Professeur mis à jour avec succès');
     } else {
@@ -121,6 +115,6 @@ class ProfController extends Controller
     public function destroy(string $id)
     {
         $DeleteProf = Prof::find($id)->delete();
-        return view('admin.profs.index');
+        return redirect()->route('profs.index');
     }
 }
