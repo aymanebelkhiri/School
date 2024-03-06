@@ -14,7 +14,6 @@ class Groupe extends Model
         'Nom',
         'Effectif',
         'Filiére',
-        'Prof'
     ];
 
     public function filiéres(){
