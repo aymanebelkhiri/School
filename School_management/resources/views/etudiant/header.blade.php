@@ -51,7 +51,7 @@
             <hr>
             <div><a href="{{ route('etudiant') }}" style="padding:15px 35px;">Personal Info </a></div>
 
-            <div><a href="">Emploi</a></div>
+            <div><a href="{{route('Emploi')}}">Emploi</a></div>
             <div><a href="{{ route('Notes', Auth::user()->id) }}">Notes</a></div>
             <div><a href="{{ route('Events') }}">Events</a></div>
             <div><a href="{{ route('Exams') }}">Exams</a></div>

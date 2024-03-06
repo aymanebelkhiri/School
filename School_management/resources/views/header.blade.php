@@ -194,7 +194,6 @@ https://templatemo.com/tm-557-grad-school
         <li><a href="#section4">Courses</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
         <li><a href="#section6">Contact</a></li>
-        <li><a href="https://templatemo.com" class="external">External</a></li>
         @if (Route::has('login'))
             
                 @auth
@@ -367,6 +366,8 @@ https://templatemo.com/tm-557-grad-school
 <script src="{{ url('js/video.js') }}"></script>
 <script src="{{ url('js/slick-slider.js') }}"></script>
 <script src="{{ url('js/custom.js') }}"></script>
+<!-- Custom script -->
+<script src="{{ asset('js/msg.js') }}"></script>
 
     <script>
         //according to loftblog tut

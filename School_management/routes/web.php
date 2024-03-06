@@ -8,7 +8,11 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\ExamenController;
 use App\Http\Controllers\MessageProfController;
 use App\Http\Controllers\MessageSecretaryController;
+<<<<<<< HEAD
 use App\Http\Controllers\NoteController;
+=======
+use App\Http\Controllers\GroupesController;
+>>>>>>> ca1d27cd07ff49b375003a68ef0e04f26a785765
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +34,7 @@ Route::get('/', function () {
 })->name("home");
 Route::get('/a', function () {
     return view('welcome');
-})->name("home");
+})->name("h");
 
 
 //-----------------------------aymane------------------------------
@@ -64,6 +68,13 @@ Route::get('/note', function () {
 
 
 //-----------------------------narjisse----------------------------
+Route::resource('groupes', App\Http\Controllers\GroupeController::class);
+Route::resource('etudiants', App\Http\Controllers\GroupesController::class);
+Route::resource('profs', App\Http\Controllers\GroupesController::class);
+Route::resource('exams', App\Http\Controllers\GroupesController::class);
+Route::resource('events', App\Http\Controllers\GroupesController::class);
+Route::resource('messages', App\Http\Controllers\GroupesController::class);
+
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
 Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');
@@ -73,4 +84,10 @@ Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage']
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
 
 //-----------------------------hraph-------------------------------
+
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\EmploiController;
+Route::get('/pay', [PaymentController::class, 'showDashboard'])->name('Dash');
+Route::post('/pay', [PaymentController::class, 'systemPayment'])->name('pay');
+Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
