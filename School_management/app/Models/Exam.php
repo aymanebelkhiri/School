@@ -11,7 +11,10 @@ class Exam extends Model
     protected $primaryKey = 'id_exam';
     protected $fillable = [
         'Module',
-        'Date'
+        'Date',
+        "title",
+        "disc",
+        "heur",
     ];
 
     public function modules(){

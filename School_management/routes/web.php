@@ -5,8 +5,11 @@ use App\Http\Controllers\HomeEtudiantController;
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamenController;
 use App\Http\Controllers\MessageProfController;
 use App\Http\Controllers\MessageSecretaryController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\GroupesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +41,22 @@ Route::get('/etudiant',[App\Http\Controllers\HomeEtudiantController::class, 'ind
 Route::get('/admin', [App\Http\Controllers\HomeAdminController::class, 'index'])->name('admin');
 Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->name('prof');
 
+Route::post('profexamen', [ExamenController::class, 'store'])->name('examens.store');
+Route::post('addNote', [NoteController::class, 'store'])->name('note.store');
+
+Route::get('/profexamen', function () {
+    return view('prof.exams');
+})->name("examen");
+
+Route::get('/messages', function () {
+    return view('prof.message');
+})->name("messageFromStudent");
+
+Route::get('/note', function () {
+    return view('prof.note');
+})->name("addNote");
+
+
 // Route::middleware(["role:etudiants"])->group(function(){
 //     Route::get("/etudiant",function(){
 //         return "etudiant";
@@ -46,6 +65,14 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 
 //-----------------------------narjisse----------------------------
+Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
+Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
+Route::resource('profs', App\Http\Controllers\ProfController::class);
+Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
+Route::resource('exams', App\Http\Controllers\GroupesController::class);
+Route::resource('events', App\Http\Controllers\GroupesController::class);
+Route::resource('messages', App\Http\Controllers\MessageController::class);
+
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
 Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');

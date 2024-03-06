@@ -19,8 +19,8 @@
     foreach ($Modules as $Module) {
         // Récupérer les notes pour ce module
         $notes = Note::where('Etudiant', $etudiant->id_etudiant)
-                      ->where('Module', $Module->id_module)
-                      ->get();
+                        ->where('Module', $Module->id_module)
+                        ->get();
 
         // Stocker les notes dans le tableau $notesParModule
         $notesParModule[$Module->Nom] = $notes;

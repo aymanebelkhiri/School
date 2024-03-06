@@ -1,22 +1,35 @@
-@extends('layouts.app')
+@extends('prof.header')
+@section('contentStudent')
+@php
+    use App\Models\Prof;
+    use App\Models\Module;
+    $prof = Prof::findOrFail(Auth::user()->id);
+    $module = Module::findOrFail($prof->Module);
+@endphp
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    {{ __('prof!') }}
-                </div>
+
+<style>
+    .total{
+        width: 1550px;
+        margin: auto;
+        text-align: center;
+    }
+</style>
+
+
+<div class="container total">
+    <center><h1>Personal Information</h1></center><br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <p><strong>Email:</strong> {{$prof->Email}}</p>
+            <p><strong>Nom:</strong> {{$prof->Nom}}</p>
+            <p><strong>Sexe:</strong> {{$prof->Sexe}}</p>
             </div>
+            <div class="col-md-6">
+            <p><strong>Prénom:</strong> {{$prof->Prenom}}</p>
+            <p><strong>Module:</strong> {{$module->Nom}}</p>
         </div>
     </div>
 </div>
