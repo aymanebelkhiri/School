@@ -38,7 +38,7 @@ class NoteController extends Controller
         $note->save();
 
         // Rediriger l'utilisateur vers une vue appropriée après la création de l'note
-        return redirect()->route('addNote')->with('success', 'Exam added successfully.');
+        return redirect()->route('addNote')->with('success', 'NOte added successfully.');
     }
 
     /**
