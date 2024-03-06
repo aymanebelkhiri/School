@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Exam;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
-class ExamenController extends Controller
+class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class ExamenController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -28,20 +28,17 @@ class ExamenController extends Controller
      */
     public function store(Request $request)
     {
+        // Création d'un nouvel note avec les données validées
+        $note = new Note();
+        $note->Title = strip_tags($request->input("title"));
+        $note->Valeur = strip_tags($request->input("note"));
+        $note->Module = strip_tags($request->input("module"));
+        $note->Etudiant = strip_tags($request->input("etudiant"));
+        // Enregistrement de l'note dans la base de données
+        $note->save();
 
-        // Création d'un nouvel examen avec les données validées
-        $examen = new Exam();
-        $examen->Module = strip_tags($request->input("module"));
-        $examen->Date = strip_tags($request->input("date"));
-        $examen->heur = strip_tags($request->input("heur"));
-        $examen->titre = strip_tags($request->input("titre"));
-        $examen->disc = strip_tags($request->input("disc"));
-        // Enregistrement de l'examen dans la base de données
-        $examen->save();
-
-        // Rediriger l'utilisateur vers une vue appropriée après la création de l'examen
-        return redirect()->route('examen')->with('success', 'Exam added successfully.');
-    
+        // Rediriger l'utilisateur vers une vue appropriée après la création de l'note
+        return redirect()->route('addNote')->with('success', 'Exam added successfully.');
     }
 
     /**

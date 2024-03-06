@@ -5,8 +5,10 @@ use App\Http\Controllers\HomeEtudiantController;
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamenController;
 use App\Http\Controllers\MessageProfController;
 use App\Http\Controllers\MessageSecretaryController;
+use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,10 +39,23 @@ Auth::routes();
 Route::get('/etudiant',[App\Http\Controllers\HomeEtudiantController::class, 'index'])->name('etudiant');
 Route::get('/admin', [App\Http\Controllers\HomeAdminController::class, 'index'])->name('admin');
 Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->name('prof');
-Route::resource('examens', 'ExamenController');
+
+Route::post('profexamen', [ExamenController::class, 'store'])->name('examens.store');
+Route::post('addNote', [NoteController::class, 'store'])->name('note.store');
+
 Route::get('/profexamen', function () {
     return view('prof.exams');
 })->name("examen");
+
+Route::get('/messages', function () {
+    return view('prof.message');
+})->name("messageFromStudent");
+
+Route::get('/note', function () {
+    return view('prof.note');
+})->name("addNote");
+
+
 // Route::middleware(["role:etudiants"])->group(function(){
 //     Route::get("/etudiant",function(){
 //         return "etudiant";
