@@ -1,5 +1,5 @@
 
-@extends('header')
+@extends('admin.header')
 <br>
 <br>
 <br>
@@ -7,7 +7,7 @@
 <br>
 <br>
 @section('title','contactDash')
-@section('content')
+@section('adminContent')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -25,6 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if(isset($contact))
                                 @foreach ($contact as $message)
                                     <tr>
                                         <td>{{ $message->name }}</td>
@@ -33,6 +34,7 @@
                                         <td>{{ $message->message }}</td>
                                     </tr>
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
