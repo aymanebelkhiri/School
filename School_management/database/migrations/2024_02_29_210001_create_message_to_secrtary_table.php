@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('message_to_secrtary', function (Blueprint $table) {
+            $table->id('id_message');
             $table->text('Message');
             $table->unsignedBigInteger('Etudiant');
             $table->foreign('Etudiant')->references('id_etudiant')->on('etudiants')->cascadeOnDelete();

@@ -32,8 +32,7 @@
             <ul class="main-menu">
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('Courses.index') }}">Courses</a></li>
-                <li><a href="{{route('contacto')}}">Contact</a></li>
-                <li><a href="https://templatemo.com" class="external">External</a></li>
+                <li><a href="{{route('Contact')}}">Contact</a></li>
                 @guest
                 <li><a id="myBtn">Connect</a></li>
                 @else

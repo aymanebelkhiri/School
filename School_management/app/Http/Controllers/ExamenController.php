@@ -13,9 +13,7 @@ class ExamenController extends Controller
      */
     public function index()
     {
-        $Exams = DB::table('exams')
-        ->join('modules','modules.id_module','=','exams.Module')
-        ->select('exams.id_exam','exams.titre','exams.disc','exams.Date','exams.heur','modules.Nom as Module');
+        $Exams = Exam::all();
         return view('admin.exams.index',compact('Exams'));
     }
 
@@ -24,7 +22,7 @@ class ExamenController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.exams.create');
     }
 
     /**
@@ -33,19 +31,29 @@ class ExamenController extends Controller
     public function store(Request $request)
     {
 
-        // Création d'un nouvel examen avec les données validées
-        $examen = new Exam();
-        $examen->Module = strip_tags($request->input("module"));
-        $examen->Date = strip_tags($request->input("date"));
-        $examen->heur = strip_tags($request->input("heur"));
-        $examen->titre = strip_tags($request->input("titre"));
-        $examen->disc = strip_tags($request->input("disc"));
-        // Enregistrement de l'examen dans la base de données
-        $examen->save();
+        $request->validate([
+            'Titre'=>'required',
+            'Description'=>'required',
+            'Date'=>'required',
+            'heure'=>'required',
+            'Module'=>'required'
+        ]);
 
-        // Rediriger l'utilisateur vers une vue appropriée après la création de l'examen
-        return redirect()->route('examen')->with('success', 'Exam added successfully.');
-    
+
+        $Exam = Exam::create([
+            'titre'=>$request->input('Titre'),
+            'disc'=>$request->Description,
+            'Date'=>$request->Date,
+            'heur'=>$request->heure,
+            'Module'=>$request->Module
+        ]);
+
+        if($Exam){
+            return redirect()->route('exams.index');
+        }else{
+            return redirect()->route('exams.create');
+
+        }
     }
 
     /**
@@ -75,8 +83,14 @@ class ExamenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Exam $Exam)
     {
-        //
+        $DestroyExam = $Exam->delete();
+        if($DestroyExam){
+            return redirect()->route('exams.index')->with('success','exam supprimé avec success');
+        }else{
+            return redirect()->route('exams.index')->with('fail','failed to destroy exam');
+
+        }
     }
 }

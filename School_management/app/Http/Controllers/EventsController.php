@@ -36,7 +36,7 @@ class EventsController extends Controller
             'date' => 'required',
         ]);
     
-        $input = $request->all();
+        
     
         if ($request->hasFile('Photo')) {
             $image = $request->file('Photo');
@@ -46,7 +46,12 @@ class EventsController extends Controller
             $input['image'] = $productprofileImage;
         }
     
-        $event = Events::create($input);
+        $event = Events::create([
+            'Title'=>$request->Title,
+            'Description'=>$request->Description,
+            'Photo'=>$request->$request->image,
+            'Date'=>$request->date
+        ]);
     
         if ($event) {
             return redirect()->route('events.index')->with('success', 'Evenement ajouté avec succès');

@@ -71,7 +71,7 @@ Route::resource('profs', App\Http\Controllers\ProfController::class);
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
 Route::resource('exams', App\Http\Controllers\ExamenController::class);
 Route::resource('events', App\Http\Controllers\EventsController::class);
-Route::resource('messages', App\Http\Controllers\MessageController::class);
+Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
@@ -96,8 +96,8 @@ Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index'
 Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
 Route::post('/Courses/{id}/purchase', [CourseController::class, 'purchase'])->name('Courses.purchase');
 Route::get('/contact',function(){
-   return view('contact.index'); 
-})->name('contacto');
+   return view('admin.contactAdmin.index'); 
+})->name('Contact');
 
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('contactAdmin.index');

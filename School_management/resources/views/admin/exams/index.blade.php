@@ -2,15 +2,15 @@
 @section('adminContent')
 <div>
         <center><h1><i>Liste des exams</i></h1></center><br>
-        <a href="{{ route('exams.create') }}" class='btn btn-primary'> Ajouer Exam</a>
-        <br><br>
-        @if(isset($success))
-        <div style='background-color:green'>{{$success}}</div>
+        @if(session('success'))
+        <div style='color:green' class='container'>{{session('success')}}</div>
         @endif
 
-        @if(session('Echec'))
-        <div style='background-color:green'>{{session('Echec')}}</div>
+        @if(session('fail'))
+        <div style='color:green' class='container'>{{session('fail')}}</div>
         @endif
+
+        <a href="{{ route('exams.create') }}" class='btn btn-primary'>Ajouter un exam </a>
         <table class='table table-striped'>
             <tr>
                 <th scope='col'>Id</th>
