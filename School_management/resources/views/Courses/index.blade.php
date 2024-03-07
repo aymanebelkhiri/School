@@ -9,29 +9,19 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1 class="text-center">All Modules</h1>
-            <ul class="list-group">
-                @foreach($modules as $module)
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h3>{{ $module->Nom }}</h3>
-                                <p>{{ $module->description }}</p>
-                            </div>
-                            <div>
-                                <p>Price: ${{ $module->price }}</p>
-                                <form action="{{ route('Courses.purchase', $module->id_module) }}" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary btn-sm">Buy Now</button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+    <div class="row">
+        @foreach($courses as $course)
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ $course->image_url }}" class="card-img-top" alt="{{ $course->Nom }}">
+                <div class="card-body">
+                    <h3 class="card-title">{{ $course->Nom }}</h3>
+                    <p class="card-text">{{ $course->description }}</p>
+                    <a href="{{ route('Courses.show', $course->id_module) }}" class="btn btn-primary">See More</a>
+                </div>
+            </div>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

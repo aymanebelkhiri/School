@@ -17,12 +17,13 @@ return new class extends Migration
             $table->integer('MasseHoraire');
             $table->integer('Coefficient');
             $table->text('description');
-            $table->decimal('price', 8, 2);
+            $table->string('image_url')->nullable();
             $table->unsignedBigInteger('Filiére');
             $table->foreign('Filiére')->references('id')->on('filiéres')->cascadeOnDelete();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.
