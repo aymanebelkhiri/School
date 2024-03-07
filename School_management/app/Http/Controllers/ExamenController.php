@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExamenController extends Controller
 {
@@ -12,7 +13,10 @@ class ExamenController extends Controller
      */
     public function index()
     {
-        //
+        $Exams = DB::table('exams')
+        ->join('modules','modules.id_module','=','exams.Module')
+        ->select('exams.id_exam','exams.titre','exams.disc','exams.Date','exams.heur','modules.Nom as Module');
+        return view('admin.exams.index',compact('Exams'));
     }
 
     /**

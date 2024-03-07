@@ -109,8 +109,13 @@ class GroupeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Groupe $Groupe)
     {
-        //
+        if ($Groupe) {
+            $Groupe->delete();
+            return redirect()->route('groupes.index')->with('success', 'Étudiant supprimé avec succès');
+        } else {
+            return redirect()->route('groupes.index')->with('Echec', 'Échec de la suppression de l\'étudiant');
+        }
     }
 }

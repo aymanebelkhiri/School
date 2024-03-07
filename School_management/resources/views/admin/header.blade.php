@@ -52,6 +52,7 @@
             <div><a href="/events">Events</a></div>
             <div><a href="/exams">Exams</a></div>
             <div><a href="/messages"> Messages</a></div>
+            <div><a href="{{ route('Contact') }}"> Contact</a></div>
             <br><br><br><br><br>
             <br><br><br><br><br>
         </aside>

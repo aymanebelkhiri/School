@@ -69,18 +69,20 @@ Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
-Route::resource('exams', App\Http\Controllers\GroupesController::class);
-Route::resource('events', App\Http\Controllers\GroupesController::class);
+Route::resource('exams', App\Http\Controllers\ExamenController::class);
+Route::resource('events', App\Http\Controllers\EventsController::class);
 Route::resource('messages', App\Http\Controllers\MessageController::class);
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
-Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
-Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');
+Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
+Route::get('/Exams',[ExamController::class,'getExams'])->name('Exams');
 Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name('messageTeacher');
 Route::post('/sendingMessage_prof',[MessageProfController::class,'sendMessage'])->name('Send_message_Teacher');
 Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
-
+Route::get('/contact', function(){
+    return view('admin.Contact');
+})->name('Contact');
 //-----------------------------hraph-------------------------------
 
 use App\Http\Controllers\PaymentController;

@@ -35,7 +35,7 @@
                 <td class='table-primary'>
 
                 <a href="{{ route('etudiants.edit', $Etudiant->id_etudiant) }}" class='btn btn-success'>Modifier</a>   
-                <form id="delete-form-{{$Etudiant->etudiant}}" action="{{ route('etudiants.destroy', $Etudiant->etudiant) }}" method="POST" style="display: inline;">
+                <form id="delete-form-{{$Etudiant->id_etudiant}}" action="{{ route('etudiants.destroy', $Etudiant->id_etudiant) }}" method="POST" style="display: inline;">
                      @csrf
                      @method('DELETE')
                      <button type="submit" class="btn btn-danger">Supprimer</button>
