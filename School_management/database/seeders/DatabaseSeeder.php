@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,7 +19,7 @@ class DatabaseSeeder extends Seeder
  //  \App\Models\Filiére::factory(10)->create();
 //    \App\Models\Groupe_Prof::factory(10)->create();
   // \App\Models\Groupe::factory(10)->create();
- //\App\Models\Module::factory(10)->create();
+ // \App\Models\Module::factory(10)->create();
    // \App\Models\Note::factory(10)->create();
  // \App\Models\Prof::factory(10)->create();
 

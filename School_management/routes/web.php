@@ -88,13 +88,13 @@ Route::get('/contact', function(){
 
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseAdController;
 use App\Http\Controllers\ContactMessageController;
 
 Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
-Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
-Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
-Route::post('/Courses/{id}/purchase', [CourseController::class, 'purchase'])->name('Courses.purchase');
+ Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
+ Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
 Route::get('/contact',function(){
    return view('admin.contactAdmin.index'); 
 })->name('Contact');
@@ -102,3 +102,4 @@ Route::get('/contact',function(){
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('contactAdmin.index');
 
+Route::resource('courses', CourseAdController::class);

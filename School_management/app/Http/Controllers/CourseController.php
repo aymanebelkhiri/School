@@ -1,48 +1,19 @@
 <?php
-namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 use App\Models\Module;
-use Stripe\Stripe;
-use Stripe\PaymentIntent;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        $modules = Module::all();
-        return view('Courses.index', compact('modules'));
+        $courses = Module::all();
+        return view('Courses.index', compact('courses'));
     }
-
     public function show($id)
     {
-        $module = Module::findOrFail($id);
-        return view('Courses.show', compact('module'));
+        $course = Module::findOrFail($id);
+        return view('Courses.show', compact('course'));
     }
-
-    public function purchase(Request $request, $id)
-    {
-        $module = Module::findOrFail($id);
-    
-        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-    
-        try {
-            $paymentIntent = PaymentIntent::create([
-                'amount' => $module->price * 100,
-                'currency' => 'usd',
-            ]);
-    
-            $successMessage = "Your payment for {$module->name} has been successfully processed!";
-            Session::flash('success', $successMessage);
-    
-            return redirect()->route('Courses.show', ['id' => $id])->with('success', $successMessage);
-        } catch (\Exception $e) {
-            $failureMessage = "Payment failed for {$module->name}: " . $e->getMessage();
-            Session::flash('error', $failureMessage);
-    
-            return redirect()->route('Courses.show', ['id' => $id])->with('error', $failureMessage);
-        }
-    }
-    
 }

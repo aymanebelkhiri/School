@@ -31,8 +31,8 @@
         <nav id="menu" class="main-nav" role="navigation">
             <ul class="main-menu">
                 <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('Courses.index') }}">Courses</a></li>
                 <li><a href="{{route('Contact')}}">Contact</a></li>
+                <li><a href="{{ route('Courses.index') }}">Discover all Courses</a></li>
                 @guest
                 <li><a id="myBtn">Connect</a></li>
                 @else
