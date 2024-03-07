@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\GroupeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\DB;
 use App\Models\Groupe;

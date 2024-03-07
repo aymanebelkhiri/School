@@ -1,9 +1,8 @@
 @extends('header')
 
-
-@section('titre', 'Home')
-
+@section('title', 'Home')
 @section('content')
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
       <!-- Success Message -->
@@ -13,13 +12,16 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
-
+      @if(session('success'))
+      <div class="alert alert-success">
+          {{ session('success') }}
+      </div>
+  @endif
       <!-- Navbar content -->
       <!-- Navbar brand, toggler, links, etc. -->
   </div>
 </nav>
 
-  <!-- ***** Main Banner Area Start ***** -->
   <section class="section main-banner" id="top" data-section="section1">
       <video autoplay muted loop id="bg-video">
       <source src="{{ url('images/course-video.mp4') }}" type="video/mp4" />
@@ -37,9 +39,22 @@
       </div>
   </section>
   <!-- ***** Main Banner Area End ***** -->
+<!-- Check if success message exists -->
+@if (session('success'))
+<div class="alert alert-success" role="alert">
+    {{ session('success') }}
+</div>
+@endif
 
+<!-- Check if error message exists -->
+@if (session('error'))
+<div class="alert alert-danger" role="alert">
+    {{ session('error') }}
+</div>
+@endif
+  <!-- ***** Main Banner Area Start ***** -->
 
-  <section class="features">
+  {{-- <section class="features">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-12">
@@ -232,7 +247,7 @@
               <img src="{{ url('images/author-01.png') }}" alt="Author 1">
               </div>
               <div class="text-button-pay">
-                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Courses.index')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -259,7 +274,7 @@
               <img src="{{ url('images/author-03.png') }}" alt="Author 3">
               </div>
               <div class="text-button-pay">
-                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Courses.index')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -286,7 +301,7 @@
               <img src="{{ url('images/courses-05.jpg') }}" alt="">
               </div>
               <div class="text-button-pay">
-                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Courses.index')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -327,7 +342,7 @@
 
               </div>
               <div class="text-button-pay">
-                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Courses.index')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -341,7 +356,7 @@
               <img src="{{ url('images/author-04.png') }}" alt="">
               </div>
               <div class="text-button-pay">
-                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Courses.index')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
@@ -371,14 +386,14 @@
 
               </div>
               <div class="text-button-pay">
-                <a href="{{route('Dash')}}">Pay <i class="fa fa-angle-double-right"></i></a>
+                <a href="{{route('Courses.index')}}">Pay <i class="fa fa-angle-double-right"></i></a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   
 
   <section class="section video" data-section="section5">

@@ -21,6 +21,8 @@ class ModuleFactory extends Factory
                                                    'back-end','Soft skills','Cloud Native','Securité']),
             'MasseHoraire' => $this->faker->randomNumber(),
             'Coefficient' => $this->faker->numberBetween(1,3),
+            'description' => $this->faker->sentence(), 
+            'price' => $this->faker->randomFloat(2, 0, 1000), 
             'Filiére' => $this->faker->numberBetween(1,10)                                     
         ];
     }
