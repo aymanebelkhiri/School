@@ -7,33 +7,27 @@ use App\Models\ContactMessage;
 
 class ContactMessageController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // admin mapping 
+    public function getMessage (){
+        $contact=ContactMessage::all();
+        return view ('contactAdmin.index',compact('contact'));
+    }
     public function store(Request $request)
     {
-        // Validate the form data
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
         ]);
 
-        // Create a new ContactMessage instance
         $contactMessage = new ContactMessage();
-        $contactMessage->name = $request->name;
-        $contactMessage->email = $request->email;
-        $contactMessage->subject = $request->subject;
-        $contactMessage->message = $request->message;
-
-        // Save the ContactMessage instance to the database
+        $contactMessage->name = $validatedData['name'];
+        $contactMessage->email = $validatedData['email'];
+        $contactMessage->subject = $validatedData['subject'];
+        $contactMessage->message = $validatedData['message'];
         $contactMessage->save();
 
-        // Optionally, you can redirect the user after successful submission
-        return redirect()->back()->with('success', 'Your message has been submitted successfully!');
+        return redirect()->route('home')->with('successM', 'Your message was sent successfully!');
     }
 }

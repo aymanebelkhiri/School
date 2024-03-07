@@ -1,9 +1,8 @@
 @extends('header')
 
-
-@section('titre', 'Home')
-
+@section('title', 'Home')
 @section('content')
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
       <!-- Success Message -->
@@ -13,7 +12,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       @endif
-
+      @if(session('success'))
+      <div class="alert alert-success">
+          {{ session('success') }}
+      </div>
+  @endif
       <!-- Navbar content -->
       <!-- Navbar brand, toggler, links, etc. -->
   </div>

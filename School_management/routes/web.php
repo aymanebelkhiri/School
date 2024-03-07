@@ -86,11 +86,9 @@ Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'send
 
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ContactMessageController;
+
 Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
-
-
-
-
 
 Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
 Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
@@ -98,3 +96,7 @@ Route::post('/Courses/{id}/purchase', [CourseController::class, 'purchase'])->na
 Route::get('/contact',function(){
    return view('contact.index'); 
 })->name('contacto');
+
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('contactAdmin.index');
+
