@@ -42,8 +42,9 @@
 
         <aside><br>
             <center>
-           
-            <h4 style="color: #f5a425;">Admin:<br>{{Auth::user()->name}}</h4>
+                @if (Auth::check())
+                    <h4 style="color: #f5a425;">Admin:<br>{{ Auth::user()->name }}</h4>
+                @endif
             </center>
             <hr>
             <div><a href="/groupes" style="padding:15px 35px;">Groupes</a></div>
@@ -55,10 +56,10 @@
             <div><a href="{{ route('Contact') }}"> Contact</a></div>
             <div><a href="/courses">Courses</a></div>
             <div><a href="/Contact">Contact</a></div>
-
             <br><br><br><br><br>
             <br><br><br><br><br>
         </aside>
+        
 
 
         <article>
