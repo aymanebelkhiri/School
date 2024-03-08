@@ -61,7 +61,7 @@ Route::get('/profexamen', function () {
     return view('prof.exams');
 })->name("examen");
 
-Route::get('/messages', function () {
+Route::get('/prof_messages', function () {
     return view('prof.message');
 })->name("messageFromStudent");
 
@@ -89,17 +89,10 @@ Route::get('/note', function () {
 Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
-<<<<<<< HEAD
-// Route::resource('exams', App\Http\Controllers\GroupesController::class);
-// Route::resource('events', App\Http\Controllers\GroupesController::class);
-// Route::resource('messages', App\Http\Controllers\GroupesController::class);
-
-=======
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
 Route::resource('exams', App\Http\Controllers\ExamenController::class);
 Route::resource('events', App\Http\Controllers\EventsController::class);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
->>>>>>> fd718259ffabaa7b3e81a8e428190e7b6d3d5683
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');

@@ -31,7 +31,6 @@ class ExamenController extends Controller
     public function store(Request $request)
     {
 
-<<<<<<< HEAD
         // Création d'un nouvel examen avec les données validées
         $examen = new Exam();
         $examen->Module = strip_tags($request->input("module"));
@@ -46,31 +45,6 @@ class ExamenController extends Controller
         // Rediriger l'utilisateur vers une vue appropriée après la création de l'examen
         return view('prof.exams')->with('success', 'Exam added successfully.');
     
-=======
-        $request->validate([
-            'Titre'=>'required',
-            'Description'=>'required',
-            'Date'=>'required',
-            'heure'=>'required',
-            'Module'=>'required'
-        ]);
-
-
-        $Exam = Exam::create([
-            'titre'=>$request->input('Titre'),
-            'disc'=>$request->Description,
-            'Date'=>$request->Date,
-            'heur'=>$request->heure,
-            'Module'=>$request->Module
-        ]);
-
-        if($Exam){
-            return redirect()->route('exams.index');
-        }else{
-            return redirect()->route('exams.create');
-
-        }
->>>>>>> fd718259ffabaa7b3e81a8e428190e7b6d3d5683
     }
 
     /**
