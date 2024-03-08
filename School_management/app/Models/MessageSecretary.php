@@ -9,6 +9,7 @@ class MessageSecretary extends Model
 {
     use HasFactory;
     protected $table = 'message_to_secrtary';
+    protected $primaryKey = 'id_message';
     protected $fillable = [
         'Message',
         'Etudiant'

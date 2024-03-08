@@ -16,11 +16,14 @@ return new class extends Migration
             $table->string('Nom');
             $table->integer('MasseHoraire');
             $table->integer('Coefficient');
+            $table->text('description');
+            $table->string('image_url')->nullable();
             $table->unsignedBigInteger('Filiére');
             $table->foreign('Filiére')->references('id')->on('filiéres')->cascadeOnDelete();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

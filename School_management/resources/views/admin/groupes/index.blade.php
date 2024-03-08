@@ -2,7 +2,7 @@
 @section('adminContent')
 <div>
         <center><h1><i>Liste des groupes</i></h1></center><br>
-        <a href="{{ route('groupes.create') }}" class='btn btn-primary'> Ajouer Groupe$Groupe</a>
+        <a href="{{ route('groupes.create') }}" class='btn btn-primary'> Ajouer un Groupe</a>
         <br><br>
         @if(isset($success))
         <div style='background-color:green'>{{$success}}</div>
@@ -27,12 +27,12 @@
                 <td class='table-primary'>{{$Groupe->Effectif}}</td>
                 <td class='table-primary'>{{$Groupe->Filiére}}</td>
                 <td class='table-primary'>
-                <a href="{{ route('groupes.destroy', $Groupe->id_groupe) }}" class="btn btn-danger">Supprimer</a>
                 <a href="{{ route('groupes.edit', $Groupe->id_groupe) }}" class='btn btn-success'>Modifier</a>   
-                    <form id="delete-form-{{$Groupe->id_groupe}}" action="{{ route('groupes.destroy', $Groupe->id_groupe) }}" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                <form id="delete-form-{{$Groupe->id_groupe}}" action="{{ route('groupes.destroy', $Groupe->id_groupe) }}" method="POST" style="display: inline;">
+                     @csrf
+                     @method('DELETE')
+                     <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
                 </td>
             </tr>   
             @endforeach

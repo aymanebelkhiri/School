@@ -89,24 +89,45 @@ Route::get('/note', function () {
 Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
+<<<<<<< HEAD
 // Route::resource('exams', App\Http\Controllers\GroupesController::class);
 // Route::resource('events', App\Http\Controllers\GroupesController::class);
 // Route::resource('messages', App\Http\Controllers\GroupesController::class);
 
+=======
+Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
+Route::resource('exams', App\Http\Controllers\ExamenController::class);
+Route::resource('events', App\Http\Controllers\EventsController::class);
+Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
+>>>>>>> fd718259ffabaa7b3e81a8e428190e7b6d3d5683
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
-Route::get('/events', [EventController::class, 'getEvents'])->name('Events');
-Route::get('/exams',[ExamController::class,'getExams'])->name('Exams');
+Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
+Route::get('/Exams',[ExamController::class,'getExams'])->name('Exams');
 Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name('messageTeacher');
 Route::post('/sendingMessage_prof',[MessageProfController::class,'sendMessage'])->name('Send_message_Teacher');
 Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
-
+Route::get('/contact', function(){
+    return view('admin.Contact');
+})->name('Contact');
 //-----------------------------hraph-------------------------------
 
-use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\EmploiController;
-Route::get('/pay', [PaymentController::class, 'showDashboard'])->name('Dash');
-Route::post('/pay', [PaymentController::class, 'systemPayment'])->name('pay');
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseAdController;
+use App\Http\Controllers\ContactMessageController;
+
 Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
+ Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
+ Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
+Route::get('/contact',function(){
+   return view('admin.contactAdmin.index'); 
+})->name('Contact');
+
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
+Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('contactAdmin.index');
+
+Route::resource('courses', CourseAdController::class);

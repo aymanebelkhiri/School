@@ -33,12 +33,13 @@
                 <td class='table-primary'>{{$Etudiant->Sexe}}</td>
                 <td class='table-primary'>{{$Etudiant->Groupe}}</td>
                 <td class='table-primary'>
-                <a href="{{ route('etudiants.destroy', $Etudiant->id_etudiant) }}" class="btn btn-danger">Supprimer</a>
+
                 <a href="{{ route('etudiants.edit', $Etudiant->id_etudiant) }}" class='btn btn-success'>Modifier</a>   
-                    <form id="delete-form-{{$Etudiant->id_etudiant}}" action="{{ route('etudiants.destroy', $Etudiant->id_etudiant) }}" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                <form id="delete-form-{{$Etudiant->id_etudiant}}" action="{{ route('etudiants.destroy', $Etudiant->id_etudiant) }}" method="POST" style="display: inline;">
+                     @csrf
+                     @method('DELETE')
+                     <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
                 </td>
             </tr>   
             @endforeach

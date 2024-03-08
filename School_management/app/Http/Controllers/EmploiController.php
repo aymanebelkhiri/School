@@ -8,21 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class EmploiController extends Controller
 {
-    public function index ()
-    {
-        $emps=Emploi::with(['module','prof','filiere'])->get();
-        return view('Emploi.index', compact('emps'));
-    }
 
-    // public function getEmploi(){
-    //     $Emploi = DB::table('emploi')
-    //         ->leftJoin('modules', 'modules.id_module', '=', 'emploi.module')
-    //         ->leftJoin('profs', 'profs.id_prof', '=', 'emploi.prof')
-    //         ->leftJoin('filieres', 'filieres.id', '=', 'emploi.filiere')
-    //         ->select('modules.Nom as module', 'profs.Nom as prof', 'filieres.Nom as filiere')
-    //         ->get();
-    //     return $Emploi;
-    // }
+    public function index(){
+        $Emploi = DB::table('emploi')
+            ->leftJoin('modules', 'modules.id_module', '=', 'emploi.module')
+            ->leftJoin('profs', 'profs.id_prof', '=', 'emploi.prof')
+            ->leftJoin('filieres', 'filieres.id', '=', 'emploi.filiere')
+            ->select('modules.Nom as module', 'profs.Nom as prof', 'filieres.Nom as filiere','salleNum','day','startTime','endTime')
+            ->get();
+        return view('etudiants.emploi', compact('Emploi'));
+    }
     
     
 }

@@ -133,7 +133,7 @@ class EtudiantRController extends Controller
     public function destroy(Etudiant $Etudiant)
     {
         if ($Etudiant) {
-            $Etudiant->destroy();
+            $Etudiant->delete();
             return redirect()->route('etudiants.index')->with('success', 'Étudiant supprimé avec succès');
         } else {
             return redirect()->route('etudiants.index')->with('Echec', 'Échec de la suppression de l\'étudiant');
