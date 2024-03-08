@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 
-class ExamenController extends Controller
+class Exams extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view("prof.exams");
     }
 
     /**
@@ -20,7 +20,7 @@ class ExamenController extends Controller
      */
     public function create()
     {
-        
+        return view("prof.add_exams");
     }
 
     /**
@@ -28,21 +28,7 @@ class ExamenController extends Controller
      */
     public function store(Request $request)
     {
-
-        // Création d'un nouvel examen avec les données validées
-        $examen = new Exam();
-        $examen->Module = strip_tags($request->input("module"));
-        $examen->Date = strip_tags($request->input("date"));
-        $examen->heur = strip_tags($request->input("heur"));
-        $examen->titre = strip_tags($request->input("titre"));
-        $examen->disc = strip_tags($request->input("disc"));
-        $examen->groupe = strip_tags($request->input("grp"));
-        // Enregistrement de l'examen dans la base de données
-        $examen->save();
-
-        // Rediriger l'utilisateur vers une vue appropriée après la création de l'examen
-        return view('prof.exams')->with('success', 'Exam added successfully.');
-    
+        //
     }
 
     /**
@@ -58,7 +44,9 @@ class ExamenController extends Controller
      */
     public function edit(string $id)
     {
-        
+        return view("prof.edit_exam",[
+            "exam"=>Exam::findOrFail($id)
+        ]);
     }
 
     /**
@@ -66,7 +54,16 @@ class ExamenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $Exam=Exam::findOrFail($id);
+        $Exam->titre=strip_tags($request->input("titre"));
+        $Exam->heur=strip_tags($request->input("heur"));
+        $Exam->Date=strip_tags($request->input("date"));
+        $Exam->disc=strip_tags($request->input("disc"));
+        $Exam->module=strip_tags($request->input("module"));
+        $Exam->groupe=strip_tags($request->input("grp"));
+        $Exam->save();
+        
+        return view('prof.exams')->with('success', 'Exam Edited successfully.');
     }
 
     /**
@@ -74,6 +71,8 @@ class ExamenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $Exam=Exam::findOrFail($id);
+        $Exam->delete();
+        return view('prof.exams')->with('success', 'Exam Deleted successfully.');
     }
 }

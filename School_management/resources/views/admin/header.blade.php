@@ -47,7 +47,7 @@
             </center>
             <hr>
             <div><a href="/groupes" style="padding:15px 35px;">Groupes</a></div>
-            <div><a href="">Professeurs</a></div>
+            <div><a href="/profs">Professeurs</a></div>
             <div><a href="/etudiants">Etudiant</a></div>
             <div><a href="/events">Events</a></div>
             <div><a href="/exams">Exams</a></div>

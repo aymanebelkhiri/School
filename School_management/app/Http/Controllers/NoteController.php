@@ -28,19 +28,22 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        // Création d'un nouvel note avec les données validées
+        // Création d'une nouvelle note avec les données validées
         $note = new Note();
         $note->Title = strip_tags($request->input("title"));
         $note->Valeur = strip_tags($request->input("note"));
         $note->Module = strip_tags($request->input("module"));
         $note->Etudiant = strip_tags($request->input("etudiant"));
-        // Enregistrement de l'note dans la base de données
+        // Enregistrement de la note dans la base de données
         $note->save();
-
-        // Rediriger l'utilisateur vers une vue appropriée après la création de l'note
-        return redirect()->route('addNote')->with('success', 'NOte added successfully.');
+    
+        // Redirection de l'utilisateur avec un message de succès et la requête
+        return view('prof.EtudiantNote',[
+            'success' => 'Note added successfully.',
+            'data' => $request->all()
+        ]);
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -54,7 +57,9 @@ class NoteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view("prof.edit_note",[
+            "note"=>Note::findOrFail($id),
+        ]);
     }
 
     /**
@@ -62,7 +67,13 @@ class NoteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $note=Note::findOrFail($id);
+        $note->Valeur=strip_tags($request->input("valeur"));
+        $note->save();
+        return view('prof.EtudiantNote',[
+            'success' => 'Note edited successfully.',
+            'data' => $request->all()
+        ]);
     }
 
     /**
@@ -70,6 +81,28 @@ class NoteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $array = explode('*', $id);
+    
+        // Now $array contains all the values separately
+    
+        $noteId = $array[0];  // Note ID
+        $module = $array[1];   // Module
+        $grp = $array[2];  // Group ID
+        $title = $array[3];    // Title
+        $data=array();
+        $data["module"]=$module;
+        $data["grp"]=$grp;
+        $data["title"]=$title;
+        // Now you can use these variables as needed
+    
+        $note = Note::findOrFail($noteId);
+        $note->delete();
+    
+        return view('prof.EtudiantNote',[
+            'success' => 'Note deleted successfully.',
+            'data' => $data
+        ]);
     }
+    
+
 }
