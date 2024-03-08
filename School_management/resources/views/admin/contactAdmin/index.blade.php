@@ -1,18 +1,8 @@
 
 @extends('admin.header')
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 @section('title','contactDash')
 @section('adminContent')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">               
-<br><br>
+   
                         <table class="table table-dark table-striped">
                             <thead>
                                 <tr>

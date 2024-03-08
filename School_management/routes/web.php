@@ -89,21 +89,15 @@ Route::get('/note', function () {
 Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
-<<<<<<< HEAD
 // Route::resource('exams', App\Http\Controllers\GroupesController::class);
 // Route::resource('events', App\Http\Controllers\GroupesController::class);
 // Route::resource('messages', App\Http\Controllers\GroupesController::class);
 
-=======
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
 Route::resource('events', App\Http\Controllers\EventsController::class);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
-<<<<<<< HEAD
-Route::post('/groupes/{id}', [YourController::class, 'update'])->name('groupes.update');
+Route::post('/groupes/{id}', [GroupeController::class, 'update'])->name('groupes.update');
 
-=======
->>>>>>> fd718259ffabaa7b3e81a8e428190e7b6d3d5683
->>>>>>> 1889578721f0236d25d313ae13b14b5a47d22ae3
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
@@ -112,9 +106,9 @@ Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name
 Route::post('/sendingMessage_prof',[MessageProfController::class,'sendMessage'])->name('Send_message_Teacher');
 Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
-Route::get('/contact', function(){
-    return view('admin.Contact');
-})->name('Contact');
+Route::get('/ContactForAdmin', function(){
+    return view('admin.ContactAdmin.index');
+})->name('ContactForAdmin');
 //-----------------------------hraph-------------------------------
 
 

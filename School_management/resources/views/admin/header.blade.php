@@ -51,7 +51,7 @@
             <div><a href="/etudiants">Etudiant</a></div>
             <div><a href="/events">Events</a></div>
             <div><a href="{{ route('Messages')}}"> Messages</a></div>
-            <div><a href="{{ route('Contact') }}"> Contact</a></div>
+            <div><a href="/ContactForAdmin"> Contact</a></div>
             <div><a href="/courses">Courses</a></div>
 
             <br><br><br><br><br>
