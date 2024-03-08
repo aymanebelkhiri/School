@@ -39,7 +39,8 @@ class ProfController extends Controller
             'prenom'=>'required',
             'email'=>'required',
             'sexe'=>'required',
-            'module'=>'required'
+            'module'=>'required',
+            'password'=>'required'
         ]);
     
         $Module = Module::where('Nom',$request->module)->value('id_module');
@@ -50,6 +51,7 @@ class ProfController extends Controller
             'Email'=>$request->email,
             'Sexe'=>$request->sexe,
             'Module'=>$Module,
+            'Password'=>$request->password
         ]);
 
         if($NewProf){

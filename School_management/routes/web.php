@@ -90,9 +90,11 @@ Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
-Route::resource('exams', App\Http\Controllers\ExamenController::class);
 Route::resource('events', App\Http\Controllers\EventsController::class);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
+
+
+
 
 Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
@@ -117,7 +119,7 @@ Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
  Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
  Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
 Route::get('/contact',function(){
-   return view('admin.contactAdmin.index'); 
+   return view('contact.index'); 
 })->name('Contact');
 
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');

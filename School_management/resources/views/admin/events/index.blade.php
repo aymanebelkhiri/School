@@ -1,10 +1,9 @@
 @extends('admin.header')0
 @section('adminContent')
 <body>
-    <br><br><br><br><br><br>
     <div class="container">
         <center><h1><i>Les evenements</i></h1></center>
-        <br><br><br><br>
+        <br><br>
         <a href="{{ route('events.create')}}" class="btn btn-primary">Ajouter un event</a>
 
         @if(session('success'))
