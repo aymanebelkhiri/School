@@ -38,6 +38,9 @@
         .menu2{
             display: none;
         }
+        .art{
+            flex: 1
+        }
     </style>
 
 
@@ -60,7 +63,7 @@
         </aside>
 
 
-        <article>
+        <article class="art">
             <!-- content -->
             @yield("contentStudent")
         </article>
