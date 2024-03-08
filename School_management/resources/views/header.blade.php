@@ -34,7 +34,7 @@
                 <li><a href="{{route('Contact')}}">Contact</a></li>
                 <li><a href="{{ route('Courses.index') }}">Discover all Courses</a></li>
                 @guest
-                <li><a id="myBtn">Connect</a></li>
+                <li><a id="myBtn" style='color:white;'>Connect</a></li>
                 @else
                 <li>
                     <a class="external" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

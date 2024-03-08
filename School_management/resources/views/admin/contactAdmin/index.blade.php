@@ -11,10 +11,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Users Messages</div>
-<br> <br>
-                    <div class="card-body">
+                <div class="card">               
+<br><br>
                         <table class="table table-dark table-striped">
                             <thead>
                                 <tr>

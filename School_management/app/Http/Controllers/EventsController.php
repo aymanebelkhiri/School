@@ -32,32 +32,31 @@ class EventsController extends Controller
         $request->validate([
             'Title' => 'required',
             'Description' => 'required',
-            'Photo' => 'required|image', 
+            'Photo' => 'required|image|mimes:jpg,png,gif,jpeg,bmp,svg|max:2048', 
             'date' => 'required',
         ]);
-    
         
-    
-        if ($request->hasFile('Photo')) {
-            $image = $request->file('Photo');
-            $destinationPath = 'images/';
-            $productprofileImage = date('YmdHis') .".". $image->getClientOriginalExtension();
-            $image->move($destinationPath, $productprofileImage);
-            $input['image'] = $productprofileImage;
+        $input = $request->except('Photo'); 
+        
+        if ($image = $request->file('Photo')) {
+            if ($image->isValid()) { 
+                $destinationPath = 'images/';   
+                $productprofileImage = date('YmdHis').".".$image->getClientOriginalExtension(); 
+                $image->move($destinationPath, $productprofileImage);
+                $input['Photo'] = $productprofileImage; 
+            } else {
+                return redirect()->route('events.create')->with('fail', 'Failed to upload image.');
+            }
         }
-    
-        $event = Events::create([
-            'Title'=>$request->Title,
-            'Description'=>$request->Description,
-            'Photo'=>$request->$request->image,
-            'Date'=>$request->date
-        ]);
-    
+        
+        $event = Events::create($input);
+        
         if ($event) {
             return redirect()->route('events.index')->with('success', 'Evenement ajouté avec succès');
         } else {
             return redirect()->route('events.create')->with('fail', 'L\'événement n\'a pas été ajouté.');
         }
+        
     }
     
 
