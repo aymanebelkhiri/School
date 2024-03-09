@@ -80,9 +80,7 @@ Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name
 Route::post('/sendingMessage_prof',[MessageProfController::class,'sendMessage'])->name('Send_message_Teacher');
 Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
-Route::get('/contact', function(){
-    return view('admin.Contact');
-})->name('Contact');
+
 //-----------------------------hraph-------------------------------
 
 
@@ -95,11 +93,22 @@ Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
  Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
  Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
-Route::get('/contact',function(){
-   return view('admin.contactAdmin.index'); 
-})->name('Contact');
 
-Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
-Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('contactAdmin.index');
+
+ Route::get('/contact',function(){
+    return view('contact.index'); 
+})->name('contact.index');
+Route::post('/contactStore', [ContactMessageController::class, 'store'])->name('contact.store');
+
+//Admin Contact
+Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('admin.contactAdmin.index');
+
+
 
 Route::resource('courses', CourseAdController::class);
+
+
+/// HistoryStatic
+Route::get('/info',function(){
+    return view('info'); 
+})->name('inf');

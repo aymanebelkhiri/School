@@ -13,7 +13,7 @@
                     <div class="card-header">Create Module</div>
 
                     <div class="card-body">
-                        <form action="{{ route('CoursesAd.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">

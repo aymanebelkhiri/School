@@ -18,6 +18,9 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        <div class="mb-3">
+                            <a href="{{ route('courses.create') }}" class="btn btn-primary">Create Module</a>
+                        </div>
 
                         <table class="table">
                             <thead>

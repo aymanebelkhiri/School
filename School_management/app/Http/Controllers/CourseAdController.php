@@ -26,25 +26,28 @@ class CourseAdController extends Controller
             'Coefficient' => 'required|integer',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'Filière' => 'required|string', // Adding validation for 'Filière' field
         ]);
-
-        $course  = new Module();
-        $course ->Nom = $request->input('Nom');
-        $course ->MasseHoraire = $request->input('MasseHoraire');
-        $course ->Coefficient = $request->input('Coefficient');
-        $course ->description = $request->input('description');
-
+    
+        $course = new Module();
+        $course->Nom = $request->input('Nom');
+        $course->MasseHoraire = $request->input('MasseHoraire');
+        $course->Coefficient = $request->input('Coefficient');
+        $course->description = $request->input('description');
+        $course->Filière = $request->input('Filière'); // Assigning value for 'Filière' field
+    
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time().'.'.$image->extension();
+            $imageName = time() . '.' . $image->extension();
             $image->storeAs('public/images', $imageName);
-            $course ->image = $imageName;
+            $course->image_url = $imageName;
         }
-
-        $course ->save();
-
+    
+        $course->save();
+    
         return redirect()->route('admin.CourseAd.index')->with('success', 'Module added successfully');
     }
+    
 
     public function show($id)
     {
@@ -60,30 +63,32 @@ class CourseAdController extends Controller
 
     public function update(Request $request, $id)
     {
-        $course  = Module::findOrFail($id);
-
+        $course = Module::findOrFail($id);
+    
         $request->validate([
             'Nom' => 'required|string',
             'MasseHoraire' => 'required|integer',
             'Coefficient' => 'required|integer',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'Filière' => 'required|string', // Adding validation for 'Filière' field
         ]);
-
-        $course ->Nom = $request->input('Nom');
-        $course ->MasseHoraire = $request->input('MasseHoraire');
-        $course ->Coefficient = $request->input('Coefficient');
-        $course ->description = $request->input('description');
-
+    
+        $course->Nom = $request->input('Nom');
+        $course->MasseHoraire = $request->input('MasseHoraire');
+        $course->Coefficient = $request->input('Coefficient');
+        $course->description = $request->input('description');
+        $course->Filière = $request->input('Filière'); // Assigning value for 'Filière' field
+    
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time().'.'.$image->extension();
+            $imageName = time() . '.' . $image->extension();
             $image->storeAs('public/images', $imageName);
-            $course ->image_url = $imageName;
+            $course->image_url = $imageName;
         }
-
-        $course ->save();
-
+    
+        $course->save();
+    
         return redirect()->route('courses.index')->with('success', 'Module updated successfully');
     }
 
