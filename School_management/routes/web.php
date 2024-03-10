@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Absence;
 use Illuminate\Support\Facades\DB;
 
 
@@ -15,6 +16,8 @@ use App\Http\Controllers\MessageProfController;
 use App\Http\Controllers\MessageSecretaryController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\AbsenceController;
+use App\Http\Controllers\addAbsence;
+use App\Http\Controllers\GroupeController;
 // use App\Http\Controllers\NoteController;
 // use App\Http\Controllers\GroupesController;
 
@@ -51,15 +54,23 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 Route::post('profexamen', [ExamenController::class, 'store'])->name('examens.store');
 Route::post('addNote', [AddNote::class, 'store'])->name('note.store');
+Route::post('addAbsence', [addAbsence::class, 'store'])->name('absence.store2');
 Route::post('note_etudiant', [NoteController::class, 'store'])->name('note.store2');
 Route::get('edit_note/{id}', [NoteController::class, 'edit'])->name('note.edit');
 Route::resource('notes', NoteController::class);
+Route::resource('absence', Absence::class);
 Route::resource('exams', Exams::class);
 
 
 Route::get('/profexamen', function () {
-    return view('prof.exams');
+    return view('prof.exams',[
+        "success"=>""
+    ]);
 })->name("examen");
+
+Route::get('/absence_prof_etudiant', function () {
+    return view('prof.absence');
+})->name("absence_prof_etudiant");
 
 Route::get('/prof_messages', function () {
     return view('prof.message');

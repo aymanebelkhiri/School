@@ -63,7 +63,9 @@ class Exams extends Controller
         $Exam->groupe=strip_tags($request->input("grp"));
         $Exam->save();
         
-        return view('prof.exams')->with('success', 'Exam Edited successfully.');
+        return view('prof.exams',[
+            "success"=>'Exam Edited successfully.'
+        ]);
     }
 
     /**
@@ -73,6 +75,8 @@ class Exams extends Controller
     {
         $Exam=Exam::findOrFail($id);
         $Exam->delete();
-        return view('prof.exams')->with('success', 'Exam Deleted successfully.');
+        return view('prof.exams',[
+            "success"=>'Exam Deleted successfully.'
+        ]);
     }
 }
