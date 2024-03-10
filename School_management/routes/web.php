@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Absence;
-use App\Http\Controllers\addAbsence;
+use Illuminate\Support\Facades\DB;
+
+
 use App\Http\Controllers\AddNote;
 use App\Http\Controllers\HomeEtudiantController;
 
@@ -13,10 +15,9 @@ use App\Http\Controllers\Exams;
 use App\Http\Controllers\MessageProfController;
 use App\Http\Controllers\MessageSecretaryController;
 use App\Http\Controllers\NoteController;
-// use App\Http\Controllers\NoteController;
-// use App\Http\Controllers\GroupesController;
-
-
+use App\Http\Controllers\AbsenceController;
+use App\Http\Controllers\addAbsence;
+use App\Http\Controllers\GroupeController;
 // use App\Http\Controllers\NoteController;
 // use App\Http\Controllers\GroupesController;
 
@@ -99,25 +100,36 @@ Route::get('/note', function () {
 Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
 Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
 Route::resource('profs', App\Http\Controllers\ProfController::class);
+
+// Route::resource('exams', App\Http\Controllers\GroupesController::class);
+// Route::resource('events', App\Http\Controllers\GroupesController::class);
+// Route::resource('messages', App\Http\Controllers\GroupesController::class);
+
+Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
+Route::resource('events', App\Http\Controllers\EventsController::class);
+Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
+Route::post('/groupes/{id}', [GroupeController::class, 'update'])->name('groupes.update');
+
+
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
 Route::resource('events', App\Http\Controllers\EventsController::class);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
 
-
-
-
 Route::get('/note/{id}', function () {
     return view('etudiant.notes');
 })->name("Notes");
+
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
 Route::get('/Exams',[ExamController::class,'getExams'])->name('Exams');
 Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name('messageTeacher');
 Route::post('/sendingMessage_prof',[MessageProfController::class,'sendMessage'])->name('Send_message_Teacher');
 Route::get('/messageSecretary',[MessageSecretaryController::class,'FormMessage'])->name('messageSecretary');
 Route::post('/sendingMessage_secretary',[MessageSecretaryController::class,'sendMessage'])->name('Send_message_secretary');
-Route::get('/contact', function(){
-    return view('admin.Contact');
-})->name('Contact');
+Route::get('/ContactForAdmin', function(){
+    return view('admin.ContactAdmin.index');
+})->name('ContactForAdmin');
+
+Route::get('/absences/{id}',[AbsenceController::class,'getAbsence'])->name('Absences');
 //-----------------------------hraph-------------------------------
 
 
