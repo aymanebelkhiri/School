@@ -1,11 +1,6 @@
 @extends('etudiant.header')
 @section('contentStudent')
 <div class="container">
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> 5eba26162c8685e4bf43169fcf51bc2e77e31e86
    <center><h1><i>Absence</i></h1></center>
    <table border='0' class='table table-striped text-center'>
         <tr>
@@ -23,10 +18,6 @@
    
    </table>        
 </div>
-<<<<<<< HEAD
  
 @endsection
-=======
 
-@endsection
->>>>>>> 5eba26162c8685e4bf43169fcf51bc2e77e31e86

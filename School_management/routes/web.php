@@ -97,23 +97,18 @@ Route::get('/note', function () {
 // Route::resource('events', App\Http\Controllers\GroupesController::class);
 // Route::resource('messages', App\Http\Controllers\GroupesController::class);
 
-Route::resource('/groupes', App\Http\Controllers\GroupeController::class);
-Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class);
-Route::resource('profs', App\Http\Controllers\ProfController::class);
+Route::resource('groupes', App\Http\Controllers\GroupeController::class, ['names' => 'groupes']);
+Route::resource('etudiants', App\Http\Controllers\EtudiantRController::class, ['names' => 'etudiants']);
+Route::resource('profs', App\Http\Controllers\ProfController::class, ['names' => 'profs']);
 
 // Route::resource('exams', App\Http\Controllers\GroupesController::class);
 // Route::resource('events', App\Http\Controllers\GroupesController::class);
 // Route::resource('messages', App\Http\Controllers\GroupesController::class);
 
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
-Route::resource('events', App\Http\Controllers\EventsController::class);
+Route::resource('events', App\Http\Controllers\EventsController::class, ['names' => 'events']);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
 Route::post('/groupes/{id}', [GroupeController::class, 'update'])->name('groupes.update');
-
-
-Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
-Route::resource('events', App\Http\Controllers\EventsController::class);
-Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
 
 Route::get('/note/{id}', function ($id) {
     return view('etudiant.notes',compact('id'));
@@ -140,7 +135,7 @@ use App\Http\Controllers\ContactMessageController;
 
 Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
- Route::get('/Courses', [CourseController::class, 'index'])->name('Courses.index');
+ Route::get('/Courses', [CourseController::class, 'index'])->name('courses');
  Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
 Route::get('/contact',function(){
    return view('contact.index'); 

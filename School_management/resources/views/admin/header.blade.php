@@ -46,13 +46,13 @@
             <h4 style="color: #f5a425;">Admin:<br>{{Auth::user()->name}}</h4>
             </center>
             <hr>
-            <div><a href="/groupes" style="padding:15px 35px;">Groupes</a></div>
-            <div><a href="/profs">Professeurs</a></div>
-            <div><a href="/etudiants">Etudiant</a></div>
-            <div><a href="/events">Events</a></div>
+            <div><a href="{{route('groupes.index')}}" style="padding:15px 35px;">Groupes</a></div>
+            <div><a href="{{route('profs.index')}}">Professeurs</a></div>
+            <div><a href="{{route('etudiants.index')}}">Etudiant</a></div>
+            <div><a href="{{route('events.index')}}">Events</a></div>
             <div><a href="{{ route('Messages')}}"> Messages</a></div>
-            <div><a href="/ContactForAdmin"> Contact</a></div>
-            <div><a href="/courses">Courses</a></div>
+            <div><a href="{{route('ContactForAdmin')}}"> Contact</a></div>
+            <div><a href="{{route('courses')}}">Courses</a></div>
 
             <br><br><br><br><br>
             <br><br><br><br><br>
