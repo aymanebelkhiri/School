@@ -13,10 +13,10 @@ class EmploiController extends Controller
         $Emploi = DB::table('emploi')
             ->leftJoin('modules', 'modules.id_module', '=', 'emploi.module')
             ->leftJoin('profs', 'profs.id_prof', '=', 'emploi.prof')
-            ->leftJoin('filieres', 'filieres.id', '=', 'emploi.filiere')
-            ->select('modules.Nom as module', 'profs.Nom as prof', 'filieres.Nom as filiere','salleNum','day','startTime','endTime')
+            ->leftJoin('filiéres', 'filiéres.id', '=', 'emploi.filiere')
+            ->select('modules.Nom as module', 'profs.Nom as prof', 'filiéres.Nom as filiere','salleNum','day','startTime','endTime')
             ->get();
-        return view('etudiants.emploi', compact('Emploi'));
+        return view('etudiant.emploi', compact('Emploi'));
     }
     
     

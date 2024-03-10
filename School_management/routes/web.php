@@ -104,8 +104,8 @@ Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'
 Route::resource('events', App\Http\Controllers\EventsController::class);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
 
-Route::get('/note/{id}', function () {
-    return view('etudiant.notes');
+Route::get('/note/{id}', function ($id) {
+    return view('etudiant.notes',compact('id'));
 })->name("Notes");
 
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
@@ -118,7 +118,7 @@ Route::get('/ContactForAdmin', function(){
     return view('admin.ContactAdmin.index');
 })->name('ContactForAdmin');
 
-Route::get('/absence/{id}',[AbsenceController::class,'getAbsence'])->name('Absence');
+Route::get('/absences/{id}',[AbsenceController::class,'getAbsence'])->name('Absences');
 //-----------------------------hraph-------------------------------
 
 

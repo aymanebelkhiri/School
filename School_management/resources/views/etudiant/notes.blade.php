@@ -7,11 +7,10 @@
     use App\Models\Module;
     use App\Models\Note;
 
-    $etudiant = Etudiant::findOrFail(Auth::user()->id);
+    $etudiant = Etudiant::findOrFail($id);
     $grp = Groupe::findOrFail($etudiant->Groupe);
     $filiere = Filiére::findOrFail($grp->Filiére);
     $Modules = Module::where('Filiére', $filiere->id)->get();
-
     $notesParModule = [];
 
     foreach ($Modules as $Module) {

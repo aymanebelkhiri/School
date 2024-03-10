@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($emps as $emp)
+                    @foreach($Emploi as $emp)
                     <tr>
                         <td>{{ $emp->module }}</td>
                         <td>{{ $emp->prof}}</td>
