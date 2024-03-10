@@ -40,9 +40,9 @@
 
 <div class="container total">
     <center><h1>Exams</h1></center><br><br>
-    @if(session('success'))
+    @if($success)
     <div class="alert alert-success">
-        {{ session('success') }}
+        {{ $success}}
     </div>
     @endif
 

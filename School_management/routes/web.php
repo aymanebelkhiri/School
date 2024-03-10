@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Absence;
+use App\Http\Controllers\addAbsence;
 use App\Http\Controllers\AddNote;
 use App\Http\Controllers\HomeEtudiantController;
 
@@ -51,15 +53,23 @@ Route::get('/prof', [App\Http\Controllers\HomeProfController::class, 'index'])->
 
 Route::post('profexamen', [ExamenController::class, 'store'])->name('examens.store');
 Route::post('addNote', [AddNote::class, 'store'])->name('note.store');
+Route::post('addAbsence', [addAbsence::class, 'store'])->name('absence.store2');
 Route::post('note_etudiant', [NoteController::class, 'store'])->name('note.store2');
 Route::get('edit_note/{id}', [NoteController::class, 'edit'])->name('note.edit');
 Route::resource('notes', NoteController::class);
+Route::resource('absence', Absence::class);
 Route::resource('exams', Exams::class);
 
 
 Route::get('/profexamen', function () {
-    return view('prof.exams');
+    return view('prof.exams',[
+        "success"=>""
+    ]);
 })->name("examen");
+
+Route::get('/absence_prof_etudiant', function () {
+    return view('prof.absence');
+})->name("absence_prof_etudiant");
 
 Route::get('/prof_messages', function () {
     return view('prof.message');
@@ -96,7 +106,9 @@ Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->nam
 
 
 
-Route::get('/notes/{id}',[App\Http\Controllers\EtudiantController::class,'getNotes'])->name('Notes');
+Route::get('/note/{id}', function () {
+    return view('etudiant.notes');
+})->name("Notes");
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
 Route::get('/Exams',[ExamController::class,'getExams'])->name('Exams');
 Route::get('/messageTeacher',[MessageProfController::class,'FormMessage'])->name('messageTeacher');
