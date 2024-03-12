@@ -135,4 +135,3 @@ Route::get('/contact',function(){
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('contactAdmin.index');
 
-Route::resource('courses', CourseAdController::class);
