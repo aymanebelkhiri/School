@@ -43,7 +43,9 @@ class ExamenController extends Controller
         $examen->save();
 
         // Rediriger l'utilisateur vers une vue appropriée après la création de l'examen
-        return view('prof.exams')->with('success', 'Exam added successfully.');
+        return view('prof.exams',[
+            "success"=>'Exam Added successfully.'
+        ]);
     
     }
 

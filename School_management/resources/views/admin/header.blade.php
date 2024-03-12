@@ -46,15 +46,22 @@
                     <h4 style="color: #f5a425;">Admin:<br>{{ Auth::user()->name }}</h4>
                 @endif
             </center>
-            <hr>
-            <div><a href="/groupes" style="padding:15px 35px;">Groupes</a></div>
-            <div><a href="/profs">Professeurs</a></div>
-            <div><a href="/etudiants">Etudiant</a></div>
-            <div><a href="/events">Events</a></div>
+            <div><a href="{{route('filiéres.index')}}" style="padding:15px 35px;">Filiéres</a></div>
+            <div><a href="{{route('modules.index')}}" style="padding:15px 35px;">Module</a></div>
+            <div><a href="{{route('groupes.index')}}" style="padding:15px 35px;">Groupes</a></div>
+            <div><a href="{{route('profs.index')}}">Professeurs</a></div>
+            <div><a href="{{route('etudiants.index')}}">Etudiant</a></div>
+            <div><a href="{{route('events.index')}}">Events</a></div>
             <div><a href="{{ route('Messages')}}"> Messages</a></div>
+<<<<<<< HEAD
             <div><a href="{{route('admin.contactAdmin.index')}}"> Contact</a></div>
             <div><a href="{{route('courses.index')}}">Courses</a></div>
         
+=======
+            <div><a href="{{route('ContactForAdmin')}}"> Contact</a></div>
+            <div><a href="{{route('courses')}}">Courses</a></div>
+
+>>>>>>> 8eba1b7724bf0fbb1139f6b89bd0a960f6208949
             <br><br><br><br><br>
             <br><br><br><br><br>
         </aside>
