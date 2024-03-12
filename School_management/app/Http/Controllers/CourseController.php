@@ -9,11 +9,11 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Module::all();
-        return view('Courses.index', compact('courses'));
+        return view('crs.index', compact('courses'));
     }
     public function show($id)
     {
         $course = Module::findOrFail($id);
-        return view('Courses.show', compact('course'));
+        return view('crs.show', compact('course'));
     }
 }

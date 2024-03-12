@@ -1,15 +1,10 @@
-@extends('admin.header')0
+@extends('admin.header')
 @section('adminContent')
-<body>
-    <br><br><br><br><br><br>
     <div class="container">
         <center><h1><i>Les evenements</i></h1></center>
-        <br><br><br><br>
+        <br><br>
         <a href="{{ route('events.create')}}" class="btn btn-primary">Ajouter un event</a>
-
-        @if(session('success'))
-        <div style='background-color:green;padding:20px'>
-        @endif 
+        <br><br>
         <div class="row">
             @if(isset($Events))
                 @foreach($Events as $Event)

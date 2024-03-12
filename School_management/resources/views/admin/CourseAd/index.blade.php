@@ -1,16 +1,11 @@
 @extends('header')
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">All Modules</div>
+                    <div class="card-header">Tous les modules</div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -19,7 +14,7 @@
                             </div>
                         @endif
                         <div class="mb-3">
-                            <a href="{{ route('courses.create') }}" class="btn btn-primary">Create Module</a>
+                            <a href="{{ route('courses.create') }}" class="btn btn-primary">Créer un module</a>
                         </div>
 
                         <table class="table">
@@ -31,14 +26,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($courses as $course )
+                                @foreach ($courses as $course)
                                     <tr>
-                                        <td>{{ $course ->Nom }}</td>
-                                        <td>{{ $course ->description }}</td>
+                                        <td>{{ $course->Nom }}</td>
+                                        <td>{{ $course->description }}</td>
                                         <td>
-                                            <a href="{{ route('courses.show', $course ->id_module) }}" class="btn btn-primary">View</a>
-                                            <a href="{{ route('courses.edit', $course ->id_module) }}" class="btn btn-warning">Edit</a>
-                                            <form action="{{ route('courses.destroy', $course ->id_module) }}" method="POST" style="display: inline-block;">
+                                            <a href="{{ route('courses.edit', $course->id_module) }}" class="btn btn-warning">Edit</a>
+                                            <form id="delete-form-{{ $course->id_module }}" action="{{ route('courses.destroy', $course->id_module) }}" method="POST" style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this module?')">Delete</button>

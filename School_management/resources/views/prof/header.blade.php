@@ -38,6 +38,9 @@
         .menu2{
             display: none;
         }
+        .art{
+            flex: 1
+        }
     </style>
 
 
@@ -54,13 +57,13 @@
             <div><a href="{{route('examen')}}">Examen</a></div>
             <div><a href="{{ route('addNote') }}">Notes</a></div>
             <div><a href="">Faltas</a></div>
-            <div><a href="{{ route('messageFromStudent') }}" style="padding:15px 10px;"> Messages</a></div>
+            <div><a href="{{ route('messageFromStudent') }}" style="padding:15px 40px;"> Messages</a></div>
             <br><br><br><br><br>
             <br><br><br><br><br>
         </aside>
 
 
-        <article>
+        <article class="art">
             <!-- content -->
             @yield("contentStudent")
         </article>

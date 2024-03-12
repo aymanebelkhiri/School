@@ -22,7 +22,7 @@
         $groupes = Groupe::where('Filiére',$filiere1->id)->get();
         foreach ($groupes as $group) {
             $Etudiants=Etudiant::where('Groupe',$group->id_groupe)->get();
-            array_push($Liste_grp, $group->Nom);
+            array_push($Liste_grp, $group->id_groupe."/".$group->Nom);
             foreach ($Etudiants as $Etudiant) {
                 array_push($Liste_etudiant , $Etudiant->id_etudiant."/".$Etudiant->Nom);
             }
@@ -90,59 +90,30 @@
                     <option></option>
                         <script>
                             function change(value) {
-                                var selectElement = document.getElementById("additionalSelect");
-                                var liste = dico[value];
-                                selectElement.innerHTML = "";
-        
-                                var emptyOption = document.createElement("option");
-                                selectElement.appendChild(emptyOption);
-        
-                                for (var i = 0; i < liste.length; i++) {
-                                    var option = document.createElement("option");
-                                    option.value = liste[i];
-                                    option.text = liste[i];
-                                    selectElement.appendChild(option);
-                                }
-                                console.log(dico2)
+                                    var selectElement = document.getElementById("additionalSelect");
+                                    var liste = dico[value];
+                                    selectElement.innerHTML = "";
+
+                                    var emptyOption = document.createElement("option");
+                                    selectElement.appendChild(emptyOption);
+
+                                    for (var i = 0; i < liste.length; i++) {
+                                        var splitValue = liste[i].split("/"); // Sépare l'ID du groupe et le nom du groupe
+                                        var option = document.createElement("option");
+                                        option.value = splitValue[0]; // Assigne l'ID du groupe à la valeur de l'option
+                                        option.text = splitValue[1]; // Assigne le nom du groupe au texte de l'option
+                                        selectElement.appendChild(option);
+                                    }
                                 }
         
         
                         </script>
                 </select>
             </div>
-            <div class="col-6 pt-3">
-                <label  class=" form-label">  Etudiant :</label><br>
-                <select id="additionalSelect1" name="etudiant" class="form-select" >
-        
-         
-                    <option></option>
-                    <script>
-                        function change2(value) {
-                            var selectElement = document.getElementById("additionalSelect1");
-                            var liste = dico2[value];
-                            selectElement.innerHTML = "";
-                    
-                            var emptyOption = document.createElement("option");
-                            selectElement.appendChild(emptyOption);
-                    
-                            for (var i = 0; i < liste.length; i++) {
-                                var parts = liste[i].split("/"); // Splitting ID and name
-                                var option = document.createElement("option");
-                                option.value = parts[0]; // ID
-                                option.text = parts[1]; // Name
-                                selectElement.appendChild(option);
-                            }
-                        }
-                    </script>
-                    
-                </select>
-            </div>
-            <div class="col-6 pt-3">
-                <label  class=" form-label">  Note :</label><br>
-                <input type="text" class="form-control" name="note" >
-            </div>
+            
+
             <br><br>
-            <div class="col-12 pt-5">
+            <div class="col-12 pt-3">
                 <label  class=" form-label">  Title :</label><br>
                 <input type="text" class="form-control" name="title" >
             </div>

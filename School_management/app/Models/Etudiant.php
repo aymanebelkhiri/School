@@ -10,6 +10,7 @@ class Etudiant extends Model
     use HasFactory;
     protected $primaryKey = 'id_etudiant';
     protected $fillable = [
+        'Matricule',
         'Nom',
         'Prenom',
         'DateNaissance',

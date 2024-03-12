@@ -13,7 +13,7 @@
                     <div class="card-header">Edit Module</div>
 
                     <div class="card-body">
-                        <form action="{{ route('courses.update',$course ->id_module) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('courses.update', $course->id_module)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -42,9 +42,9 @@
                                 <input type="file" class="form-control-file" id="image" name="image">
                             </div>
 
-                            @if ($course ->image)
+                            @if ($course ->image_url)
                                 <div class="form-group">
-                                    <img src="{{ asset('storage/images/' . $course ->image) }}" alt="{{ $course ->Nom }}" class="img-fluid">
+                                    <img src="{{ asset('storage/images/' . $course ->image_url) }}" alt="{{ $course ->Nom }}" class="img-fluid">
                                 </div>
                             @endif
 

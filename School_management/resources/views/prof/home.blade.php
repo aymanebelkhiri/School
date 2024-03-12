@@ -3,8 +3,14 @@
 @php
     use App\Models\Prof;
     use App\Models\Module;
-    $prof = Prof::findOrFail(Auth::user()->id);
-    $module = Module::findOrFail($prof->Module);
+    use Illuminate\Support\Facades\Auth;
+    if(Auth::check()){
+        $prof = Prof::findOrFail(Auth::user()->id);
+        $module = Module::findOrFail($prof->Module);
+
+    }else {
+        view("auth.login");
+    }
 @endphp
 
 

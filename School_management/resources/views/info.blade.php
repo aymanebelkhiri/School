@@ -1,15 +1,23 @@
 @extends('header')
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-@section('title', 'Information')
 
 @section('content')
 <style>
     
+    .info-container2 {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    #map {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+}
 
     .sticky-top {
     position: sticky;
@@ -47,13 +55,12 @@ p {
     }
 
     .navbar {
-    display: flex; /* Make the navbar a flex container */
-    justify-content: space-between; /* Align items horizontally */
-    align-items: center; /* Center items vertically */
+    position: fixed; /* Stick the navbar to the top */
+    top: 80px; /* Position it below the element with height 60px */
+    left: 0; /* Align it to the left */
     width: 100%; /* Full width */
     background-color: #343a40;
     padding: 10px 20px; /* Adjusted padding */
-    margin-top:250px; /* Adjusted margin for spacing below the header */
 }
 
 .navbar-nav {
@@ -80,9 +87,31 @@ p {
     color: #cd8303;
 }
 
+.navbar-nav .nav-link {
+        color: #fafafa;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease; /* Add transition effect */
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .navbar-nav .nav-link.active {
+        background-color: #cd8303; /* Change background color of active button */
+    }
+
+    .navbar-nav .nav-link:hover {
+        background-color: #555; /* Change background color on hover */
+    }
 
 </style>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
         <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav"> <!-- Center the navbar items -->
@@ -119,50 +148,66 @@ p {
     </div>
 </nav>
 
-  
+<div class="info-container" id="infoText">
+    <p>Overall, Harmony Academy is more than just a school – it's a vibrant learning community where students are encouraged to dream big, pursue their passions, and make a positive impact on the world.</p>
+</div>
 
-    <div class="info-container" id="infoText">
-                <p>Overall, Harmony Academy is more than just a school – it's a vibrant learning community where students are encouraged to dream big, pursue their passions, and make a positive impact on the world.</p>
+<!-- Partnership Section -->
+<div class="info-container" id="partnershipSection" style="display: none;">
+    <p>Our collaboration with partners enriches the educational experience. Here are some of our esteemed partners:</p>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/partner1.jpg" class="card-img-top" alt="Partner 1">
+                <div class="card-body">
+                    <h5 class="card-title">Rolls Royce</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/partner2.jpg" class="card-img-top" alt="Partner 2">
+                <div class="card-body">
+                    <h5 class="card-title">Bmce Bank</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/partner3.jpg" class="card-img-top" alt="Partner 3">
+                <div class="card-body">
+                    <h5 class="card-title">Koutoub</h5>
+                </div>
             </div>
         </div>
     </div>
-    
-<!-- Partnership Section -->
-<div class="info-container sticky-bottom" id="partnershipSection" style="display: none;">
-    
-            <p>Our collaboration with partners enriches the educational experience. Here are some of our esteemed partners:</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src= "images/partner1.jpg" class="card-img-top" alt="Partner 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Rolls Royce</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/partner2.jpg" class="card-img-top" alt="Partner 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Bmce Bank</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                    <img src="images/partner3.jpg" class="card-img-top" alt="Partner 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Koutoub</h5>
-                      </div>
-                    </div>
-                </div>
+</div>
+
+
+
+
+
+<!-- Location Section -->
+<div class="info-container2" id="locationSection" style="display: none;">
+    <div class="row">
+        <div class="col-md-6">
+            <p>Nestled in the picturesque countryside, Harmony Academy stands as a beacon of educational excellence, situated on sprawling acres of lush greenery. Located just a short drive away from the bustling city, the serene surroundings provide an ideal setting for students to focus on their studies and personal growth.</p>
+        </div>
+        <div class="col-md-6">
+            <div id="map">
+                <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     function showText(section) {
         var text = '';
         switch (section) {
             case 'location':
-                text = 'Nestled in the picturesque countryside, Harmony Academy stands as a beacon of educational excellence, situated on sprawling acres of lush greenery. Located just a short drive away from the bustling city, the serene surroundings provide an ideal setting for students to focus on their studies and personal growth.';
+                document.getElementById('locationSection').style.display = 'block';
                 break;
             case 'mission':
                 text = 'At Harmony Academy, our mission is to cultivate a diverse community of lifelong learners who are prepared to contribute positively to society. We foster a supportive and inclusive environment where students are encouraged to explore their passions, embrace challenges, and strive for excellence in all aspects of their lives.';
@@ -183,36 +228,21 @@ p {
                 text = 'At Harmony Academy, we uphold values of integrity, respect, empathy, and collaboration. We believe in fostering a culture of mutual respect and understanding, where diversity is celebrated and every individual is valued for their unique contributions to our community.';
                 break;
             case 'partnership':
-            document.getElementById('partnershipSection').style.display = 'block';
+                document.getElementById('partnershipSection').style.display = 'block';
                 break;
             case 'vision':
                 text = 'Our vision is to empower students to become compassionate, ethical leaders who are equipped to address the complex challenges of the 21st century and make a positive difference in the world. By nurturing a love of learning, fostering a spirit of inquiry, and instilling a sense of social responsibility, we aim to inspire our students to become lifelong learners and engaged global citizens.';
                 break;
         }
         document.getElementById('infoText').innerHTML = '<p>' + text + '</p>';
+
+        // Add 'active' class to the clicked navbar button
+        var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        navLinks.forEach(function(link) {
+            link.classList.remove('active'); // Remove 'active' class from all buttons
+        });
+        document.querySelector('a[href="#' + section + '"]').classList.add('active'); // Add 'active' class to clicked button
     }
 </script>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 @endsection

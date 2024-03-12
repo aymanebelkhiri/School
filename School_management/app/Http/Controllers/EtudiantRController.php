@@ -42,7 +42,6 @@ class EtudiantRController extends Controller
             'age'=>'required',
             'sexe'=>'required',
             'email'=>'required',
-            'date'=>'required',
             'password'=>'required',
             'groupe'=>'required'
         ]);
@@ -90,39 +89,41 @@ class EtudiantRController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,Etudiant  $Etudiant)
+    public function update(Request $request,$id)
     {
     
+        $etudiant = Etudiant::find($id);
+    
         $request->validate([
-            'matricule' => 'required',
+            'matricule'=>'required',
             'nom' => 'required',
             'prenom' => 'required',
-            'date' => 'required',
-            'age' => 'required',
-            'sexe' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'groupe' => 'required',
+            'date'=>'required',
+            'age'=>'required',
+            'sexe'=>'required',
+            'email'=>'required',
+            'groupe'=>'required'
         ]);
-        
-        $Groupe = Groupe::where('Nom', $request->groupe)->value('id_groupe');
     
-        $Etudiant = Etudiant::find($id);
-        $Etudiant->Matricule = $request->matricule;
-        $Etudiant->Nom = $request->nom;
-        $Etudiant->Prenom = $request->prenom;
-        $Etudiant->DateNaissance = $request->date;
-        $Etudiant->Age = $request->age;
-        $Etudiant->Sexe = $request->sexe;
-        $Etudiant->Email = $request->email;
-        $Etudiant->Password = $request->password;
-        $Etudiant->Groupe = $Groupe;
-        $Etudiant->save();
+        $Groupe = DB::table('groupes')->where('Nom',$request->groupe)->value('id_groupe');
+
+        $etudiant->Nom = $request->input('nom');
+        $etudiant->Prenom = $request->input('prenom');
+        $etudiant->Matricule = $request->input('matricule'); 
+        $etudiant->DateNaissance = $request->input('date'); 
+        $etudiant->Age = $request->input('age'); 
+        $etudiant->Sexe = $request->input('sexe'); 
+        $etudiant->Email = $request->input('email'); 
+        $etudiant->Groupe = $Groupe; 
+
+        $etudiant->save();
     
-        if($Etudiant){
-            return redirect()->route('etudiants.index')->with('success', 'Étudiant ajouté avec succès');
-        }else{
-            return view('admin.etudiants.create');
+        if ($etudiant->save()) {
+            $messageSuccess = 'Groupe mis à jour avec succès';
+            return redirect()->route('groupes.index')->with('messageSuccess', $messageSuccess);
+        } else {
+            $messageEchec = 'Échec de la mise à jour du groupe';
+            return back()->with('messageEchec', $messageEchec);
         }
     }
     

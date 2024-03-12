@@ -31,29 +31,20 @@ class ExamenController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'Titre'=>'required',
-            'Description'=>'required',
-            'Date'=>'required',
-            'heure'=>'required',
-            'Module'=>'required'
-        ]);
+        // Création d'un nouvel examen avec les données validées
+        $examen = new Exam();
+        $examen->Module = strip_tags($request->input("module"));
+        $examen->Date = strip_tags($request->input("date"));
+        $examen->heur = strip_tags($request->input("heur"));
+        $examen->titre = strip_tags($request->input("titre"));
+        $examen->disc = strip_tags($request->input("disc"));
+        $examen->groupe = strip_tags($request->input("grp"));
+        // Enregistrement de l'examen dans la base de données
+        $examen->save();
 
-
-        $Exam = Exam::create([
-            'titre'=>$request->input('Titre'),
-            'disc'=>$request->Description,
-            'Date'=>$request->Date,
-            'heur'=>$request->heure,
-            'Module'=>$request->Module
-        ]);
-
-        if($Exam){
-            return redirect()->route('exams.index');
-        }else{
-            return redirect()->route('exams.create');
-
-        }
+        // Rediriger l'utilisateur vers une vue appropriée après la création de l'examen
+        return view('prof.exams')->with('success', 'Exam added successfully.');
+    
     }
 
     /**
@@ -69,7 +60,7 @@ class ExamenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**

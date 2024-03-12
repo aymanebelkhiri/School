@@ -32,32 +32,19 @@ class EventsController extends Controller
         $request->validate([
             'Title' => 'required',
             'Description' => 'required',
-            'Photo' => 'required|image', 
-            'date' => 'required',
+            'Date' => 'required',
         ]);
-    
         
-    
-        if ($request->hasFile('Photo')) {
-            $image = $request->file('Photo');
-            $destinationPath = 'images/';
-            $productprofileImage = date('YmdHis') .".". $image->getClientOriginalExtension();
-            $image->move($destinationPath, $productprofileImage);
-            $input['image'] = $productprofileImage;
-        }
-    
-        $event = Events::create([
-            'Title'=>$request->Title,
-            'Description'=>$request->Description,
-            'Photo'=>$request->$request->image,
-            'Date'=>$request->date
-        ]);
-    
+        $input= $request->all();
+        
+        $event = Events::create($input);
+        
         if ($event) {
             return redirect()->route('events.index')->with('success', 'Evenement ajouté avec succès');
         } else {
             return redirect()->route('events.create')->with('fail', 'L\'événement n\'a pas été ajouté.');
         }
+        
     }
     
 
@@ -74,7 +61,7 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.events.edit',compact('id'));
+        // 
     }
 
     /**
@@ -82,32 +69,7 @@ class EventsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'Title' => 'required',
-            'Description' => 'required',
-            'Date' => 'required',
-            'Photo' => 'required|image',
-        ]);
-        
-        $input = $request->all();
-    
-        if ($request->hasFile('Photo')) {
-            $image = $request->file('Photo');
-            $destinationPath = 'images/';
-            $productprofileImage = date('YmdHis') .".". $image->getClientOriginalExtension();
-            $image->move($destinationPath, $productprofileImage);
-            $input['image'] = $productprofileImage;
-        } else {
-            return redirect()->back()->withInput()->with('fail', 'Veuillez sélectionner une image.');
-        }
-    
-        $event = DB::table('events')::update($input);
-    
-        if ($event) {
-            return redirect()->route('events.index')->with('success', 'Evenement ajouté avec succès');
-        } else {
-            return redirect()->route('events.create')->with('fail', 'L\'événement n\'a pas été ajouté.');
-        }
+    //    
     }
 
     /**

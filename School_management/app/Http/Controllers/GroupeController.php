@@ -88,7 +88,7 @@ class GroupeController extends Controller
             'filiére' => 'required'
         ]);
     
-        $filiereId = DB::talbe('filiéres')->where('Nom',$request->filiére)->value('id');
+        $filiereId = DB::table('filiéres')->where('Nom',$request->filiére)->value('id');
     
         // Mettre à jour les données du groupe
         $groupe->Nom = $request->input('Nom');

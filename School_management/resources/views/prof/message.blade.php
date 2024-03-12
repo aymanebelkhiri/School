@@ -6,7 +6,11 @@
     use App\Models\Etudiant;
     use App\Models\Groupe;
     $prof = Prof::findOrFail(Auth::user()->id);
-    $messages = MessageProf::where('Prof',Auth::user()->id)->get();
+
+$messages = MessageProf::where('Prof', Auth::user()->id)
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+
 @endphp
 
 
