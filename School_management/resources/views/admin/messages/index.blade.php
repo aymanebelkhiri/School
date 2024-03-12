@@ -9,11 +9,6 @@
             <h5>{{ $message->Etudiant }}</h5> {{ $message->created_at }}
             {{ $message->Message }}
         </div>
-        <form id="delete-form-{{ $message->id_message }}" action="/delete/{{ $message->id_message }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Supprimer</button>
-        </form>
     </div>
     <hr width="100%">
     @endforeach
