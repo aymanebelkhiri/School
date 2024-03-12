@@ -99,17 +99,10 @@ Route::resource('profs', App\Http\Controllers\ProfController::class, ['names' =>
 Route::put('profs/{prof}', [App\Http\Controllers\ProfController::class, 'update'])->name('profs.update');
 Route::resource('events', App\Http\Controllers\EventsController::class, ['names' => 'events']);
 Route::get('/messages', [MessageSecretaryController::class, 'getMessages'])->name('Messages');
-<<<<<<< HEAD
-Route::post('/groupes/{id}', [App\Http\Controllers\GroupeController::class, 'update'])->name('groupes.update');
-
-Route::get('/note/{id}', function () {
-    return view('etudiant.notes');
-=======
 Route::post('/groupes/{id}', [GroupeController::class, 'update'])->name('groupes.update');
 
 Route::get('/note/{id}', function ($id) {
     return view('etudiant.notes',compact('id'));
->>>>>>> 8eba1b7724bf0fbb1139f6b89bd0a960f6208949
 })->name("Notes");
 
 Route::get('/Events', [EventController::class, 'getEvents'])->name('Events');
@@ -134,16 +127,11 @@ use App\Http\Controllers\ContactMessageController;
 
 Route::get('/emploi', [EmploiController::class, 'index'])->name('Emploi');
 
-<<<<<<< HEAD
- Route::get('/crs', [CourseController::class, 'index'])->name('crs.index');
- Route::get('/crs/{id}', [CourseController::class, 'show'])->name('crs.show');
-=======
- Route::get('/Courses', [CourseController::class, 'index'])->name('courses');
- Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('Courses.show');
+ Route::get('/Courses', [CourseController::class, 'index'])->name('crs.index');
+ Route::get('/Courses/{id}', [CourseController::class, 'show'])->name('crs.show');
 Route::get('/contact',function(){
    return view('contact.index'); 
 })->name('Contact');
->>>>>>> 8eba1b7724bf0fbb1139f6b89bd0a960f6208949
 
  Route::get('/contact',function(){
     return view('contact.index'); 
@@ -152,8 +140,6 @@ Route::post('/contactStore', [ContactMessageController::class, 'store'])->name('
 
 //Admin Contact
 Route::get('/admin/contact', [ContactMessageController::class, 'getMessage'])->name('admin.contactAdmin.index');
-
-Route::resource('courses', CourseAdController::class);
 
 
 /// HistoryStatic

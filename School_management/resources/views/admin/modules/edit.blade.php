@@ -17,6 +17,10 @@
        <input type="number" class="form-control" id="C" name='Coefficient' value='{{$Module->Coefficient}}'>
     </div>
     <div class="mb-3">
+      <label for="nom" class="form-label">description </label>
+      <input type="text" class="form-control" id="nom" name='desc' value="{{$Module->description}}">
+    </div>
+    <div class="mb-3">
     <label for="S" class="form-label">Filiéres</label>
     <select  class="form-control" id="S" name='filiére'>
         @isset($Filiéres)

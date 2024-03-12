@@ -17,6 +17,7 @@
                 <th scope='col'>Nom </th>
                 <th scope='col'>Masse horaire</th>
                 <th scope='col'>Coefficient</th>
+                <th scope="col">description</th>
                 <th scope='col'>Filiére</th>
                 <th scope='col'>Action</th>
             </tr>
@@ -27,6 +28,7 @@
                 <td class='table-primary'>{{$Module->Nom}}</td>
                 <td class='table-primary'>{{$Module->MasseHoraire}}</td>
                 <td class='table-primary'>{{$Module->Coefficient}}</td>
+                <td class='table-primary'>{{$Module->description}}</td>
                 <td class='table-primary'>{{$Module->Filiére}}</td>
                 <td class='table-primary'>
                 <a href="{{ route('modules.edit', $Module->id_module) }}" class='btn btn-success'>Modifier</a>   

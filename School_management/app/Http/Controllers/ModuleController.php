@@ -36,7 +36,8 @@ class ModuleController extends Controller
             'nom' => 'required',
             'MasseH'=>'required',
             'Coefficient'=>'required',
-            'filiére'=>'required'
+            'desc'=>'required',
+            'filiére'=>'required',
         ]);
         
         $FiliéreId = Filiére::where('Nom', $request->filiére)->value('id');
@@ -45,6 +46,7 @@ class ModuleController extends Controller
             'Nom'=>$request->nom,
             'MasseHoraire'=>$request->MasseH,
             'Coefficient'=>$request->Coefficient,
+            'description'=> $request->desc,
             'Filiére'=>$FiliéreId
         ]);
     
@@ -84,6 +86,7 @@ class ModuleController extends Controller
             'Nom' => 'required',
             'MasseH' => 'required',
             'Coefficient'=>'required',
+            'desc'=>'required',
             'filiére' => 'required'
         ]);
     
@@ -92,6 +95,7 @@ class ModuleController extends Controller
         $module->Nom = $request->input('Nom');
         $module->MasseHoraire = $request->input('MasseH');
         $module->Coefficient = $request->input('Coefficient');
+        $module->description = $request->input('desc');
         $module->Filiére = $filiereId; 
     
         if ($module->save()) {

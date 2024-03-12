@@ -16,7 +16,6 @@ class Module extends Model
         'MasseHoraire',
         'Coefficient',
         'description',
-        'image_url',
         'Filiére',
     ];
 
